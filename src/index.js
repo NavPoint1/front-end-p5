@@ -4,17 +4,17 @@ import App from './App';
 
 // Redux
 import { createStore } from 'redux';
-import { Provider } from 'redux';
-import allReducer from './reducers';
+import { Provider } from 'react-redux';
+import reducers from './reducers'; // implicitly knows to look in index.js
 
 const store = createStore(
-  allReducer,
+  reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
+  , document.getElementById('root')
 );

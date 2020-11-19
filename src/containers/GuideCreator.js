@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GuideCreator = (props) => {
+const GuideCreator = () => {
 
     return (
         <div className="guide-creator">

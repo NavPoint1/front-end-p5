@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+import loggedIn from './loggedIn'
 
-const allReducers = combineReducers({
-
+const reducers = combineReducers({
+    // syntactic sugar for loggedIn: loggedIn
+    loggedIn
 });
 
-export default allReducers;
+export default reducers;

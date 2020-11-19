@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 
     return (
         <div className="login-form">

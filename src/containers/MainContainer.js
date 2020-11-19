@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // Containers
 import GuidesIndex from './GuidesIndex'
@@ -13,7 +13,7 @@ import NotFound from '../components/NotFound'
 import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
 
-const MainContainer = (props) => {
+const MainContainer = () => {
     return (
         <div className="main-container">
             <BrowserRouter>
@@ -21,11 +21,8 @@ const MainContainer = (props) => {
                     <Route exact path="/" render={() => { <GuidesIndex /> }}/>
                     <Route exact path="/new" render={() => { <GuideCreator /> }}/>
                     {/* user can only see their own profile for now? */}
-                    <Route exact path="/profile" render={(props) => { <ProfileContainer /> }}/>
+                    <Route exact path="/profile" render={() => { <ProfileContainer /> }}/>
                     <Route exact path="/guide/:id" render={() => { 
-                        // 404 if guide does not exist? check state or do fetch call?
-                        /* let painting = this.state.paintingData.find(painting => painting.id === props.match.params.id)
-                        return painting ? <PaintingDetails painting={painting} /> : <NotFound /> */
                         <GuideShow />
                     }}/>
                     <Route exact path="/login" component={LoginForm} />

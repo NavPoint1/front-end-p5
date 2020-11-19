@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GuideShow = (props) => {
+const GuideShow = () => {
 
     return (
         <div className="guide-show">

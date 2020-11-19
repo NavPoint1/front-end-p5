@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GuidesIndex = (props) => {
+const GuidesIndex = () => {
 
     return (
         <div className="guides-index">
