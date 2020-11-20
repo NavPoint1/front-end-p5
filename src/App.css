@@ -14,12 +14,19 @@ body {
     align-items: center;
     height: 5%;
     width: 100%;
-    background: wheat;
+    background: rgb(45, 25, 45);
+}
+
+#home-container {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 #home {
-    width: 5%;
-    text-align: center;
+    height: 60px;
+    margin-left: 6px;
+    margin-bottom: 5px;
 }
 
 #navbar-buttons-container {
@@ -38,5 +45,8 @@ body {
 }
 
 .navbar-button {
-    padding-left: 25px; 
+    margin-left: 10px; 
+    margin-right: 10px; 
+    color: rgb(242, 170, 39);
+    font-weight: bold;
 }
