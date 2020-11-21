@@ -1,12 +1,14 @@
 import React from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { logout } from '../actions'
+import { useSelector, useDispatch } from 'react-redux'
 
 import crownIcon from '../assets/CrownIconTransparent.png'
 import Button from '@material-ui/core/Button'
 
 const NavBar = () => {
-    const loggedIn = useSelector(state => state.loggedIn)
+    const dispatch = useDispatch()
+    const loggedInUser = useSelector(state => state.loggedInUser)
 
     return (
         <div id="navbar">
@@ -17,7 +19,7 @@ const NavBar = () => {
             </Link>
             <div id="navbar-buttons-container">
                 <div id="navbar-buttons">
-                    {loggedIn
+                    {Object.keys(loggedInUser).length !== 0
                         ?  
                             <>
                                 <Link to="/guides/new">
@@ -31,8 +33,8 @@ const NavBar = () => {
                                     </Button>
                                 </Link>
                                 <Link to="/logout">
-                                    <Button>
-                                    <div className="navbar-button">Log Out</div>
+                                    <Button onClick={() => dispatch(logout())}>
+                                        <div className="navbar-button">Log Out</div>
                                     </Button>
                                 </Link>
                             </>

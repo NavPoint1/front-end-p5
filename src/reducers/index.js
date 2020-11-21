@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import loggedIn from './loggedIn'
+import login from './login'
 
 const reducers = combineReducers({
-    // syntactic sugar for loggedIn: loggedIn
-    loggedIn
+    loggedInUser: login
 });
 
 export default reducers;
