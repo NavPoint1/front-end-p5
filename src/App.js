@@ -3,9 +3,9 @@ import './App.css';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import NavBar from './containers/NavBar'
 
 // Containers
+import NavBar from './containers/NavBar'
 import GuidesIndex from './containers/GuidesIndex'
 import GuideCreator from './containers/GuideCreator'
 import ProfileContainer from './containers/ProfileContainer'
