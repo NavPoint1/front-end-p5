@@ -11,6 +11,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { deleteSlide, updateSlideHeader, updateSlideContent, setCurrentSlide } from '../actions';
 import { useDispatch } from 'react-redux';
 
+const CWL_YELLOW = "#f2aa27"
+const CWL_PURPLE = "#2d192d"
+
 const SlidePreview = (props) => {
     const dispatch = useDispatch();
 
@@ -18,6 +21,8 @@ const SlidePreview = (props) => {
         <Box
             onClick={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
             border={1}
+            borderColor={"#808080"}
+            bgcolor={CWL_PURPLE}
             p={0} 
             marginLeft={1}
             width="85%"

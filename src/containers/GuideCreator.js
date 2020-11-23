@@ -32,11 +32,13 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     text: {
-        color: CWL_YELLOW
+        // color: CWL_YELLOW
+        color: "#ffffff"
     },
     notchedOutline: {
         // borderWidth: '1px',
-        borderColor: CWL_YELLOW + " !important"
+        // borderColor: CWL_YELLOW + " !important"
+        borderColor: "#ffffff" + " !important"
     },
   }))
 
@@ -85,11 +87,11 @@ const GuideCreator = () => {
                 :
                     <div id="guide-creator">
                         <Box 
-                            border={1} 
+                            // border={1} 
                             p={1} 
                             paddingTop={0}
                             paddingBottom={2} 
-                            width="100%"
+                            width="99%"
                             height="9%"
                             // maxHeight="50%"
                             // overflow="hidden"

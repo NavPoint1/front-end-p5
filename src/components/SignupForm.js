@@ -22,7 +22,7 @@ const URL = "http://localhost:3000/"
 
 function Copyright() {
     return (
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body2" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://classicwow.live/" target="_blank">
         CWL Inc.
@@ -32,6 +32,9 @@ function Copyright() {
       </Typography>
     );
   }
+
+  const CWL_YELLOW = "#f2aa27"
+  const CWL_PURPLE = "#2d192d"
   
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -50,6 +53,21 @@ function Copyright() {
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+    },
+    label: {
+      color: CWL_YELLOW
+    },
+    root: {
+        "& .MuiFilledInput-root": {
+            background: CWL_PURPLE
+        }
+    },
+    text: {
+        color: CWL_YELLOW
+    },
+    notchedOutline: {
+        // borderWidth: '1px',
+        borderColor: CWL_YELLOW + " !important"
     },
   }));
   
@@ -117,6 +135,18 @@ function Copyright() {
                       id="username"
                       label="Username"
                       autoFocus
+                      InputLabelProps={{
+                        classes: {
+                            root: classes.label,
+                            focused: classes.focusedLabel,
+                        }
+                      }} 
+                      InputProps={{ 
+                          classes: {
+                              root: classes.text,
+                              notchedOutline: classes.notchedOutline,
+                          }
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -128,6 +158,18 @@ function Copyright() {
                       label="Email Address"
                       name="email"
                       autoComplete="email"
+                      InputLabelProps={{
+                        classes: {
+                            root: classes.label,
+                            focused: classes.focusedLabel,
+                        }
+                      }} 
+                      InputProps={{ 
+                          classes: {
+                              root: classes.text,
+                              notchedOutline: classes.notchedOutline,
+                          }
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -140,6 +182,18 @@ function Copyright() {
                       type="password"
                       id="password"
                       autoComplete="current-password"
+                      InputLabelProps={{
+                        classes: {
+                            root: classes.label,
+                            focused: classes.focusedLabel,
+                        }
+                      }} 
+                      InputProps={{ 
+                          classes: {
+                              root: classes.text,
+                              notchedOutline: classes.notchedOutline,
+                          }
+                      }}
                     />
                   </Grid>
                   {/* <Grid item xs={12}>

@@ -20,19 +20,30 @@ const Preview = () => {
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
+    const currentSlide = useSelector(state => state.currentSlide)
 
     return (
-        <Box border={1} mx={0} p={0} width="12%" style={{
-            overflowY: "scroll",
-            overflowX: "hidden"
-            }}>
+        <Box 
+            border={1} 
+            borderColor={"#808080"}
+            mx={0} 
+            px={0.5}
+            paddingTop={0.5} 
+            width="12%" 
+            style={{
+                overflowY: "scroll",
+                overflowX: "hidden"
+            }}
+        >
             {slides.map((slide) => 
                 <Box 
                     display="flex" 
+                    bgcolor={slide.slideNumber - 1 == currentSlide ? "#808080" : null}
                     minHeight="14%"
                     maxHeight="14%"
-                    my={1}
-                    marginLeft={1}
+                    my={0}
+                    py={0.5}
+                    // mx={0.5}
                 >
                     <div className="preview-number">{slide.slideNumber}</div>
                     <SlidePreview 

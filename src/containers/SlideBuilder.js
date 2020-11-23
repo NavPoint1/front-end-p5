@@ -64,9 +64,8 @@ const SlideBuilder = () => {
 
     return (
         <Box 
-            border={1} 
             p={1} 
-            width="100%" 
+            width="99%" 
             display="flex"
             id="slide-builder-container"
             height="83%"
@@ -75,9 +74,11 @@ const SlideBuilder = () => {
             <Box 
                 onWheel={changeSlides}
                 border={1} 
-                mx={1} 
+                borderColor={"#808080"}
+                mx={0}
+                marginLeft={1}
                 py={1} 
-                width="85%" 
+                width="90%" 
                 // height="97.7%"
             >
             <Container component="main" maxWidth="xl">

@@ -25,11 +25,13 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     text: {
-        color: CWL_YELLOW
+        // color: CWL_YELLOW
+        color: "#ffffff"
     },
     notchedOutline: {
         // borderWidth: '1px',
         borderColor: CWL_YELLOW + " !important"
+        // borderColor: "#ffffff" + " !important"
     },
   }))
 
@@ -44,6 +46,8 @@ const SlideForm = (props) => {
     return (
         <Box
             border={1}
+            borderColor={CWL_YELLOW}
+            bgcolor={CWL_PURPLE}
             m={2}
             p={2} 
             paddingTop={1}

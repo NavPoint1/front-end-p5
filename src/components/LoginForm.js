@@ -20,9 +20,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const URL = "http://localhost:3000/"
 
+const CWL_YELLOW = "#f2aa27"
+const CWL_PURPLE = "#2d192d"
+
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://classicwow.live/" target="_blank">
         CWL Inc.
@@ -50,6 +53,21 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  label: {
+    color: CWL_YELLOW
+  },
+  root: {
+      "& .MuiFilledInput-root": {
+          background: CWL_PURPLE
+      }
+  },
+  text: {
+      color: CWL_YELLOW
+  },
+  notchedOutline: {
+      // borderWidth: '1px',
+      borderColor: CWL_YELLOW + " !important"
   },
 }));
 
@@ -117,6 +135,18 @@ export default function LoginForm() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                InputLabelProps={{
+                  classes: {
+                      root: classes.label,
+                      focused: classes.focusedLabel,
+                  }
+                }} 
+                InputProps={{ 
+                    classes: {
+                        root: classes.text,
+                        notchedOutline: classes.notchedOutline,
+                    }
+                }}
               />
               <TextField
                 variant="outlined"
@@ -128,6 +158,18 @@ export default function LoginForm() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                InputLabelProps={{
+                  classes: {
+                      root: classes.label,
+                      focused: classes.focusedLabel,
+                  }
+                }} 
+                InputProps={{ 
+                    classes: {
+                        root: classes.text,
+                        notchedOutline: classes.notchedOutline,
+                    }
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -150,7 +192,11 @@ export default function LoginForm() {
                 </Grid> */}
                 <Grid item>
                   <RouteLink to="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    <Typography
+                      className={classes.text}
+                    >
+                      Don't have an account? Sign Up
+                    </Typography>
                   </RouteLink>
                 </Grid>
               </Grid>
