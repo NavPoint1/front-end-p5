@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import SlideForm from '../components/SlideForm'
 import Preview from './Preview'
 
+const CWL_LIGHT_GRAY = "#808080"
+
 const SlideBuilder = () => {
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
@@ -74,7 +76,7 @@ const SlideBuilder = () => {
             <Box 
                 onWheel={changeSlides}
                 border={1} 
-                borderColor={"#808080"}
+                borderColor={CWL_LIGHT_GRAY}
                 mx={0}
                 marginLeft={1}
                 py={1} 

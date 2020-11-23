@@ -15,6 +15,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import SlideBuilder from './SlideBuilder'
 import SlidePreview from '../components/SlidePreview'
 
+const CWL_YELLOW = "#f2aa27"
+const CWL_PURPLE = "#2d192d"
+const CWL_LIGHT_GRAY = "#808080"
+
 const Preview = () => {
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
@@ -25,7 +29,7 @@ const Preview = () => {
     return (
         <Box 
             border={1} 
-            borderColor={"#808080"}
+            borderColor={CWL_LIGHT_GRAY}
             mx={0} 
             px={0.5}
             paddingTop={0.5} 
@@ -38,14 +42,21 @@ const Preview = () => {
             {slides.map((slide) => 
                 <Box 
                     display="flex" 
-                    bgcolor={slide.slideNumber - 1 == currentSlide ? "#808080" : null}
+                    bgcolor={slide.slideNumber - 1 == currentSlide ? CWL_LIGHT_GRAY : null}
                     minHeight="14%"
                     maxHeight="14%"
                     my={0}
                     py={0.5}
                     // mx={0.5}
                 >
-                    <div className="preview-number">{slide.slideNumber}</div>
+                    <div
+                        className="preview-number"
+                        style={{
+                            color: slide.slideNumber - 1 == currentSlide ? CWL_YELLOW : "#FFFFFF"
+                        }}
+                    >
+                        {slide.slideNumber}
+                    </div>
                     <SlidePreview 
                         key={slide.slideNumber}
                         slide={slide}
