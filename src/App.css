@@ -7,8 +7,8 @@ body {
     /* height: 100%; */
     width: 100%;
     /* overflow: hidden; */
-    background-color: rgb(17, 17, 17);
-    color: #f2aa27;
+    /* background-color: rgb(17, 17, 17);
+    color: #f2aa27; */
 }
 
 #navbar {
@@ -51,4 +51,12 @@ body {
     margin-right: 10px; 
     color: rgb(242, 170, 39);
     font-weight: bold;
+}
+
+#guide-creator {
+    height: 100%;
+}
+
+.preview-number {
+    display: inline;
 }

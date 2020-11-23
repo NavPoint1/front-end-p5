@@ -13,6 +13,7 @@ import { createGuide, clearGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideBuilder from './SlideBuilder'
+import SlidePreview from '../components/SlidePreview'
 
 const Preview = () => {
     const dispatch = useDispatch();
@@ -20,39 +21,21 @@ const Preview = () => {
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
 
-    const [loaded, setLoaded] = useState(false)
-
-    useEffect(() => {
-        if (Object.keys(guide).length !== 0) {
-            dispatch(clearGuide())
-        }
-        setLoaded(true)
-    },[])
-
-    const handleSubmit = (event) => {
-        // event.preventDefault()
-
-        // // build guide
-        // let title = event.target.title.value
-        // let user_id = loggedInUser.id
-
-        // let newGuide = {
-        //     title,
-        //     user_id,
-        //     // attach slides
-        //     slides
-        // }
-
-        // // dispatch to state
-        // dispatch(createGuide(newGuide))
-    }
-
     return (
-        <div id="preview">
-            <Box border={1} margin="auto" p={1} width="100%">
-
-            </Box>
-        </div>
+        <Box border={1} mx={0} p={0} width="10%" style={{
+            overflowY: "scroll",
+            overflowX: "hidden"
+            }}>
+            {slides.map((slide) => 
+                <Box display="flex" minHeight="13%" maxHeight="13%">
+                    <div className="preview-number">{slide.slideNumber}</div>
+                    <SlidePreview 
+                        key={slide.slideNumber}
+                        slide={slide}
+                    />
+                </Box>
+            )}
+        </Box>
     )
 }
 

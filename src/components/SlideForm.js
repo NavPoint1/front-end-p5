@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { deleteSlide, updateSlideHeader, updateSlideContent } from '../actions';
 import { useDispatch } from 'react-redux';
 
-const Slide = (props) => {
+const SlideForm = (props) => {
     const dispatch = useDispatch();
 
     return (
@@ -23,9 +23,6 @@ const Slide = (props) => {
             width="100%"
         >
             <Grid container spacing={0}>
-                <Grid item xs={12}>
-                    <div>{props.slide.slideNumber}</div>
-                </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         defaultValue={props.slide.header}
@@ -47,6 +44,9 @@ const Slide = (props) => {
                         startIcon={<DeleteIcon />}
                         variant="contained"
                         color="primary"
+                        style={{
+                            float: "right"
+                        }}
                     >
                         Delete Slide
                     </Button>
@@ -65,12 +65,12 @@ const Slide = (props) => {
                     label="Text Content"
                     name="content"
                     multiline
-                    rows={8}
-                    rowsMax={20}
+                    rows={24}
+                    rowsMax={24}
                 />
             </Grid>
         </Box>
     )
 }
 
-export default Slide
+export default SlideForm

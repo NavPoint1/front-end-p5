@@ -11,7 +11,8 @@ import AddIcon from '@material-ui/icons/Add';
 import { saveSlide, createSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Slide from '../components/Slide'
+import SlideForm from '../components/SlideForm'
+import Preview from './Preview'
 
 const SlideBuilder = () => {
     const dispatch = useDispatch();
@@ -40,7 +41,9 @@ const SlideBuilder = () => {
     }
 
     return (
-        <Box border={1} margin="auto" p={1} width="100%">
+        <Box border={1} p={1} width="100%" display="flex">
+            <Preview />
+            <Box border={1} margin="auto" p={1} width="85%" height="100%">
             <Container component="main" maxWidth="lg">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -52,15 +55,19 @@ const SlideBuilder = () => {
                         >
                             Add Slide
                         </Button>
-                        {slides.map((slide) => 
-                            <Slide 
-                                key={slide.slideNumber}
-                                slide={slide}
-                            />
-                        )}
+                        {slides[0] 
+                            ?
+                                <SlideForm 
+                                    key={slides[0].slideNumber}
+                                    slide={slides[0]}
+                                />
+                            :
+                                null
+                        }
                     </Grid>
                 </Grid>
             </Container>
+            </Box>
         </Box>
     )
 }
