@@ -90,6 +90,7 @@ const GuideCreator = () => {
                             p={1} 
                             paddingTop={0} 
                             width="100%"
+                            height="9%"
                             // maxHeight="50%"
                             // overflow="hidden"
                         >
@@ -99,12 +100,13 @@ const GuideCreator = () => {
                                         <Grid item xs={12}>
                                             <TextField
                                                 variant="outlined"
-                                                margin="normal"
+                                                margin="dense"
                                                 fullWidth
                                                 id="guide-title-field"
                                                 label="Title"
                                                 name="title"
                                                 autoFocus
+                                                size="small"
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
@@ -119,7 +121,7 @@ const GuideCreator = () => {
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
-                                            <div>
+                                            <div className="author-preview">
                                                 by {loggedInUser.username}
                                             </div>
                                         </Grid>
@@ -130,6 +132,9 @@ const GuideCreator = () => {
                                                 type="submit"
                                                 variant="contained"
                                                 color="primary"
+                                                style={{
+                                                    float: "right"
+                                                }}
                                             >
                                                 PUBLISH
                                             </Button>

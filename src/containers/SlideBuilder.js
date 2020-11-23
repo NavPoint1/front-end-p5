@@ -68,6 +68,8 @@ const SlideBuilder = () => {
             p={1} 
             width="100%" 
             display="flex"
+            id="slide-builder-container"
+            height="84%"
         >
             <Preview />
             <Box 
@@ -76,9 +78,8 @@ const SlideBuilder = () => {
                 mx={1} 
                 py={1} 
                 width="85%" 
-                height="100%"
             >
-            <Container component="main" maxWidth="lg">
+            <Container component="main" maxWidth="xl">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Button
