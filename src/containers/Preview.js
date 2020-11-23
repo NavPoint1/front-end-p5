@@ -22,12 +22,18 @@ const Preview = () => {
     const slides = useSelector(state => state.slides);
 
     return (
-        <Box border={1} mx={0} p={0} width="10%" style={{
+        <Box border={1} mx={0} p={0} width="12%" style={{
             overflowY: "scroll",
             overflowX: "hidden"
             }}>
             {slides.map((slide) => 
-                <Box display="flex" minHeight="13%" maxHeight="13%">
+                <Box 
+                    display="flex" 
+                    minHeight="14%"
+                    maxHeight="14%"
+                    my={1}
+                    marginLeft={1}
+                >
                     <div className="preview-number">{slide.slideNumber}</div>
                     <SlidePreview 
                         key={slide.slideNumber}

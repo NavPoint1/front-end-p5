@@ -17,8 +17,8 @@ const SlidePreview = (props) => {
     return (
         <Box
             border={1}
-            m={1}
             p={0} 
+            marginLeft={1}
             width="85%"
             overflow="hidden"
             style={{

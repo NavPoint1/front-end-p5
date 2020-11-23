@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import { borders } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
 
-import { saveSlide, createSlide } from '../actions';
+import { saveSlide, createSlide, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideForm from '../components/SlideForm'
@@ -19,6 +19,7 @@ const SlideBuilder = () => {
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
+    const currentSlide = useSelector(state => state.currentSlide)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -38,12 +39,45 @@ const SlideBuilder = () => {
     const createNewSlide = (event) => {
         event.preventDefault()
         dispatch(createSlide({}))
+        dispatch(setCurrentSlide(slides.length))
+    }
+
+    const changeSlides = (event) => {
+        let newSlideIndex = 0
+
+        if(event.deltaY < 0) {
+            // up
+            newSlideIndex = currentSlide - 1
+            if(newSlideIndex < 0) {
+                newSlideIndex = slides.length - 1
+            }
+        }
+        else {
+            // down
+            if(currentSlide < slides.length - 1) {
+                newSlideIndex = currentSlide + 1
+            }
+        }
+
+        dispatch(setCurrentSlide(newSlideIndex))
     }
 
     return (
-        <Box border={1} p={1} width="100%" display="flex">
+        <Box 
+            border={1} 
+            p={1} 
+            width="100%" 
+            display="flex"
+        >
             <Preview />
-            <Box border={1} margin="auto" p={1} width="85%" height="100%">
+            <Box 
+                onWheel={changeSlides}
+                border={1} 
+                mx={1} 
+                py={1} 
+                width="85%" 
+                height="100%"
+            >
             <Container component="main" maxWidth="lg">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -55,12 +89,9 @@ const SlideBuilder = () => {
                         >
                             Add Slide
                         </Button>
-                        {slides[0] 
+                        {slides[currentSlide] 
                             ?
-                                <SlideForm 
-                                    key={slides[0].slideNumber}
-                                    slide={slides[0]}
-                                />
+                                <SlideForm />
                             :
                                 null
                         }

@@ -85,7 +85,14 @@ const GuideCreator = () => {
                 :
                     <div id="guide-creator">
                         <ThemeProvider theme={theme}>
-                        <Box border={1} p={1} paddingTop={0} width="100%">
+                        <Box 
+                            border={1} 
+                            p={1} 
+                            paddingTop={0} 
+                            width="100%"
+                            // maxHeight="50%"
+                            // overflow="hidden"
+                        >
                             <Container component="main" maxWidth="sm" >
                                 <form onSubmit={handleSubmit} noValidate>
                                     <Grid container spacing={0}>

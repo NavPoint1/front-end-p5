@@ -9,10 +9,12 @@ import { borders } from '@material-ui/system';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { deleteSlide, updateSlideHeader, updateSlideContent } from '../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SlideForm = (props) => {
     const dispatch = useDispatch();
+    const slides = useSelector(state => state.slides);
+    const currentSlide = useSelector(state => state.currentSlide)
 
     return (
         <Box
@@ -23,11 +25,14 @@ const SlideForm = (props) => {
             width="100%"
         >
             <Grid container spacing={0}>
+                <Grid item xs={12}>
+                    <div>{slides[currentSlide].slideNumber}</div>
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        defaultValue={props.slide.header}
+                        defaultValue={slides[currentSlide].header}
                         onChange={(e) => dispatch(updateSlideHeader({
-                            slideNumber: props.slide.slideNumber,
+                            slideNumber: slides[currentSlide].slideNumber,
                             header: e.target.value
                         }))}
                         variant="outlined"
@@ -40,7 +45,7 @@ const SlideForm = (props) => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Button
-                        onClick={() => dispatch(deleteSlide(props.slide.slideNumber))}
+                        onClick={() => dispatch(deleteSlide(slides[currentSlide].slideNumber))}
                         startIcon={<DeleteIcon />}
                         variant="contained"
                         color="primary"
@@ -52,9 +57,9 @@ const SlideForm = (props) => {
                     </Button>
                 </Grid>
                 <TextField
-                    defaultValue={props.slide.content}
+                    defaultValue={slides[currentSlide].content}
                     onChange={(e) => dispatch(updateSlideContent({
-                        slideNumber: props.slide.slideNumber,
+                        slideNumber: slides[currentSlide].slideNumber,
                         content: e.target.value
                     }))}
                     autoFocus

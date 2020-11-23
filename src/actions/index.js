@@ -99,6 +99,13 @@ export const updateSlideContent = (slide) => {
     }
 }
 
+export const setCurrentSlide = (slide) => {
+    return {
+        type: "SET_CURRENT_SLIDE_INDEX",
+        payload: slide
+    }
+}
+
 export const saveSlide = (slide) => {
     return(dispatch) => {
         fetch(URL + "slides", {
