@@ -3,7 +3,21 @@ const slides = (state = [], action) => {
         case 'SAVE_SLIDE':
             return action.payload
         case 'CREATE_SLIDE':
-            return [...state, action.payload]
+            let newState = [...state, action.payload]
+            newState.forEach( (slide, index) => slide.slideNumber = index + 1)
+            return newState
+        case 'DELETE_SLIDE':
+            let delState = state.filter(slide => slide.slideNumber !== action.payload)
+            delState.forEach( (slide, index) => slide.slideNumber = index + 1)
+            return delState
+        case 'UPDATE_SLIDE_HEADER':
+            let headerUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
+            headerUpdatedSlide.header = action.payload.header
+            return state
+        case 'UPDATE_SLIDE_CONTENT':
+            let contentUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
+            contentUpdatedSlide.content = action.payload.content
+            return state
         case 'ERROR':
             console.log(action.payload)
             return {}

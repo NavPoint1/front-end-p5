@@ -7,10 +7,11 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { borders } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
-import SaveIcon from '@material-ui/icons/Save';
 
 import { saveSlide, createSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Slide from '../components/Slide'
 
 const SlideBuilder = () => {
     const dispatch = useDispatch();
@@ -35,20 +36,12 @@ const SlideBuilder = () => {
 
     const createNewSlide = (event) => {
         event.preventDefault()
-        
-        let user_id = loggedInUser.id
-
-        let newSlide = {
-            user_id
-        }
-
-        // dispatch to state
-        dispatch(createSlide(newSlide))
+        dispatch(createSlide({}))
     }
 
     return (
-        <Box border={1} margin="auto" width="100%">
-            <Container component="main" maxWidth="sm">
+        <Box border={1} margin="auto" p={1} width="100%">
+            <Container component="main" maxWidth="lg">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Button
@@ -57,30 +50,13 @@ const SlideBuilder = () => {
                             variant="contained"
                             color="primary"
                         >
-                            New Slide
+                            Add Slide
                         </Button>
-                        {slides.map(slide => 
-                            <div className="slide-creator">
-                                <form onSubmit={handleSubmit} noValidate>
-                                    <TextField
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                        id="slide-header-field"
-                                        label="Header"
-                                        name="header"
-                                        autoFocus
-                                    />
-                                    <Button
-                                        startIcon={<SaveIcon />}
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                    >
-                                        SAVE
-                                    </Button>
-                                </form>
-                            </div>
+                        {slides.map((slide) => 
+                            <Slide 
+                                key={slide.slideNumber}
+                                slide={slide}
+                            />
                         )}
                     </Grid>
                 </Grid>

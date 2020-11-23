@@ -78,6 +78,27 @@ export const createSlide = (newSlide) => {
     }
 }
 
+export const deleteSlide = (slideNumber) => {
+    return {
+        type: "DELETE_SLIDE",
+        payload: slideNumber
+    }
+}
+
+export const updateSlideHeader = (slide) => {
+    return {
+        type: "UPDATE_SLIDE_HEADER",
+        payload: slide
+    }
+}
+
+export const updateSlideContent = (slide) => {
+    return {
+        type: "UPDATE_SLIDE_CONTENT",
+        payload: slide
+    }
+}
+
 export const saveSlide = (slide) => {
     return(dispatch) => {
         fetch(URL + "slides", {

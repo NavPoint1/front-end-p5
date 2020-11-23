@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { borders } from '@material-ui/system';
+import SaveIcon from '@material-ui/icons/Save';
+import PublishIcon from '@material-ui/icons/Publish';
 
 import { Redirect } from 'react-router-dom'
 
@@ -18,6 +20,7 @@ const GuideCreator = () => {
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
+    const slides = useSelector(state => state.slides);
 
     const [loaded, setLoaded] = useState(false)
 
@@ -31,15 +34,18 @@ const GuideCreator = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
+        // build guide
         let title = event.target.title.value
         let user_id = loggedInUser.id
 
         let newGuide = {
             title,
-            user_id
+            user_id,
+            // attach slides
+            slides
         }
 
-        // dispatch to state to trigger redirect
+        // dispatch to state
         dispatch(createGuide(newGuide))
     }
 
@@ -52,34 +58,51 @@ const GuideCreator = () => {
                 ?
                     <Redirect to={"/guides/" + guide.id} />
                 :
-                    <div className="guide-creator">
-                    <Box border={1} margin="auto" width="100%">
-                        <Container component="main" maxWidth="sm" >
-                            <form onSubmit={handleSubmit} noValidate>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            variant="outlined"
-                                            margin="normal"
-                                            fullWidth
-                                            id="guide-title-field"
-                                            label="Title"
-                                            name="title"
-                                            autoFocus
-                                        />
+                    <div id="guide-creator">
+                        <Box border={1} margin="auto" p={1} width="100%">
+                            <Container component="main" maxWidth="sm" >
+                                <form onSubmit={handleSubmit} noValidate>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                variant="outlined"
+                                                margin="normal"
+                                                fullWidth
+                                                id="guide-title-field"
+                                                label="Title"
+                                                name="title"
+                                                autoFocus
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={4}>
+                                            <Button
+                                                startIcon={<SaveIcon />}
+                                                name="save"
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                SAVE
+                                            </Button>
+                                        </Grid>
+                                        <Grid item xs={12} sm={4}>
+                                            <div>
+                                                by {loggedInUser.username}
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={4}>
+                                            <Button
+                                                startIcon={<PublishIcon />}
+                                                name="publish"
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                PUBLISH
+                                            </Button>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Button
-                                            type="submit"
-                                            fullWidth
-                                            variant="contained"
-                                            color="primary"
-                                        >
-                                            Submit Guide
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                            </form>
+                                </form>
                             </Container>
                         </Box>
                         <SlideBuilder />
