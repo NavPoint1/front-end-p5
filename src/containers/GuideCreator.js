@@ -6,12 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { borders } from '@material-ui/system';
+
 import SaveIcon from '@material-ui/icons/Save';
 import PublishIcon from '@material-ui/icons/Publish';
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { Redirect } from 'react-router-dom'
 
@@ -20,7 +19,29 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import SlideBuilder from './SlideBuilder'
 
+const CWL_YELLOW = "#f2aa27"
+const CWL_PURPLE = "#2d192d"
+
+const useStyles = makeStyles((theme) => ({
+    label: {
+        color: CWL_YELLOW
+    },
+    root: {
+        "& .MuiFilledInput-root": {
+            background: CWL_PURPLE
+        }
+    },
+    text: {
+        color: CWL_YELLOW
+    },
+    notchedOutline: {
+        // borderWidth: '1px',
+        borderColor: CWL_YELLOW + " !important"
+    },
+  }))
+
 const GuideCreator = () => {
+    const classes = useStyles();
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
@@ -53,27 +74,6 @@ const GuideCreator = () => {
         dispatch(createGuide(newGuide))
     }
 
-    const theme = createMuiTheme({
-        palette: {
-          primary:  {
-            main: '#f2aa27'
-            // main: '#2d192d'
-          },
-          secondary: {
-            // main: '#f2aa27'
-            main: '#2d192d'
-          },
-          error: red,
-          // Used by `getContrastText()` to maximize the contrast between the background and
-          // the text.
-          contrastThreshold: 3,
-          // Used to shift a color's luminance by approximately
-          // two indexes within its tonal palette.
-          // E.g., shift from Red 500 to Red 300 or Red 700.
-          tonalOffset: 0.2,
-        },
-      });
-
     return (
         Object.keys(loggedInUser).length === 0
               ?
@@ -84,11 +84,11 @@ const GuideCreator = () => {
                     <Redirect to={"/guides/" + guide.id} />
                 :
                     <div id="guide-creator">
-                        <ThemeProvider theme={theme}>
                         <Box 
                             border={1} 
                             p={1} 
-                            paddingTop={0} 
+                            paddingTop={0}
+                            paddingBottom={2} 
                             width="100%"
                             height="9%"
                             // maxHeight="50%"
@@ -99,7 +99,7 @@ const GuideCreator = () => {
                                     <Grid container spacing={0}>
                                         <Grid item xs={12}>
                                             <TextField
-                                                variant="outlined"
+                                                variant="filled"
                                                 margin="dense"
                                                 fullWidth
                                                 id="guide-title-field"
@@ -107,6 +107,19 @@ const GuideCreator = () => {
                                                 name="title"
                                                 autoFocus
                                                 size="small"
+                                                className={classes.root}
+                                                InputLabelProps={{
+                                                    classes: {
+                                                        root: classes.label,
+                                                        focused: classes.focusedLabel,
+                                                    }
+                                                }} 
+                                                InputProps={{ 
+                                                    classes: {
+                                                        root: classes.text,
+                                                        notchedOutline: classes.notchedOutline,
+                                                    }
+                                                }}
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
@@ -143,7 +156,6 @@ const GuideCreator = () => {
                                 </form>
                             </Container>
                         </Box>
-                        </ThemeProvider>
                         <SlideBuilder />
                     </div>
     )

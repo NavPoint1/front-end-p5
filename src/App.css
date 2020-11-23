@@ -7,8 +7,8 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    /* background-color: rgb(17, 17, 17);
-    color: #f2aa27; */
+    background-color: rgb(17, 17, 17);
+    color: #f2aa27;
 }
 
 #navbar {
@@ -67,14 +67,15 @@ body {
 }
 
 .slide-form-field {
-    border: 1px dotted black;
+    border: 1px solid rgb(242, 170, 39);
 }
 
 .slide-form-content {
-    height: 70vh;
+    height: 68.5vh;
     margin-top: 1vh;
 }
 
 .slide-form-header {
     height: 4vh;
+    line-height: 4vh;
 }

@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import { borders } from '@material-ui/system';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { deleteSlide, updateSlideHeader, updateSlideContent } from '../actions';
+import { deleteSlide, updateSlideHeader, updateSlideContent, setCurrentSlide } from '../actions';
 import { useDispatch } from 'react-redux';
 
 const SlidePreview = (props) => {
@@ -16,6 +16,7 @@ const SlidePreview = (props) => {
 
     return (
         <Box
+            onClick={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
             border={1}
             p={0} 
             marginLeft={1}
