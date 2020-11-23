@@ -9,6 +9,10 @@ import { borders } from '@material-ui/system';
 import SaveIcon from '@material-ui/icons/Save';
 import PublishIcon from '@material-ui/icons/Publish';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import red from '@material-ui/core/colors/red';
+
 import { Redirect } from 'react-router-dom'
 
 import { createGuide, clearGuide } from '../actions';
@@ -49,6 +53,27 @@ const GuideCreator = () => {
         dispatch(createGuide(newGuide))
     }
 
+    const theme = createMuiTheme({
+        palette: {
+          primary:  {
+            main: '#f2aa27'
+            // main: '#2d192d'
+          },
+          secondary: {
+            // main: '#f2aa27'
+            main: '#2d192d'
+          },
+          error: red,
+          // Used by `getContrastText()` to maximize the contrast between the background and
+          // the text.
+          contrastThreshold: 3,
+          // Used to shift a color's luminance by approximately
+          // two indexes within its tonal palette.
+          // E.g., shift from Red 500 to Red 300 or Red 700.
+          tonalOffset: 0.2,
+        },
+      });
+
     return (
         Object.keys(loggedInUser).length === 0
               ?
@@ -59,6 +84,7 @@ const GuideCreator = () => {
                     <Redirect to={"/guides/" + guide.id} />
                 :
                     <div id="guide-creator">
+                        <ThemeProvider theme={theme}>
                         <Box border={1} margin="auto" p={1} width="100%">
                             <Container component="main" maxWidth="sm" >
                                 <form onSubmit={handleSubmit} noValidate>
@@ -105,6 +131,7 @@ const GuideCreator = () => {
                                 </form>
                             </Container>
                         </Box>
+                        </ThemeProvider>
                         <SlideBuilder />
                     </div>
     )
