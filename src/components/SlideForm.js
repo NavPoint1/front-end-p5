@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-// import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container';
 // import { borders } from '@material-ui/system';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -51,6 +51,7 @@ const SlideForm = (props) => {
             m={2}
             p={2} 
             paddingTop={1}
+            paddingBottom={1}
             marginTop={1}
             // height="89%"
         >
@@ -78,7 +79,7 @@ const SlideForm = (props) => {
                                 variant="outlined"
                                 margin="none"
                                 fullWidth
-                                id="slide-header-field"
+                                id="slide-field-header"
                                 label="Header"
                                 name="header"
                                 size="small"
@@ -117,12 +118,11 @@ const SlideForm = (props) => {
                 <Grid item xs={12} /* sm={6} */>
                     {editing !== "media" 
                         ?
-                            <div
+                            <img
+                                src={slides[currentSlide].media}
                                 onClick={() => setEditing("media")}
                                 className="slide-form-field slide-form-media"
-                            >
-                                {slides[currentSlide].media}
-                            </div>
+                            />
                         :
                             <TextField
                                 defaultValue={slides[currentSlide].media}
@@ -133,11 +133,14 @@ const SlideForm = (props) => {
                                 }))}
                                 variant="outlined"
                                 margin="none"
+                                style={{
+                                    // marginTop: "0.8%",
+                                    marginBottom: "0.36%"
+                                }}
                                 fullWidth
-                                id="slide-media-field"
+                                id="slide-field-media"
                                 label="Image URL"
                                 name="media"
-                                size="small"
                                 autoFocus
                                 InputLabelProps={{
                                     classes: {
@@ -149,7 +152,7 @@ const SlideForm = (props) => {
                                     classes: {
                                         root: classes.text,
                                         notchedOutline: classes.notchedOutline,
-                                    }
+                                    },
                                 }}
                             />
                     }
@@ -176,15 +179,15 @@ const SlideForm = (props) => {
                                     margin="none"
                                     style={{
                                         // marginTop: "0.8%",
-                                        marginBottom: "-0.1%"
+                                        // marginBottom: "0.05%"
                                     }}
                                     fullWidth
-                                    id="slide-text-field"
+                                    id="slide-field-content"
                                     label="Text Content"
                                     name="content"
                                     multiline
-                                    rows={29}
-                                    rowsMax={29}
+                                    rows={12}
+                                    rowsMax={12}
                                     InputLabelProps={{
                                         classes: {
                                             root: classes.label,
@@ -195,7 +198,7 @@ const SlideForm = (props) => {
                                         classes: {
                                             root: classes.text,
                                             notchedOutline: classes.notchedOutline,
-                                        }
+                                        },
                                     }}
                                 />
                     }

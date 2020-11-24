@@ -82,11 +82,20 @@ body {
 }
 
 .slide-form-media {
-    height: 36vh;
-    /* line-height: 4vh; */
+    height: 39.17vh;
+    width: 100%;
+    /* line-height: 39.17vh;
+    text-align: center; */
 }
 
 .slide-form-content {
-    height: 32vh;
+    height: 28.7vh;
     /* margin-top: 1vh; */
 }
+
+#slide-field-media {
+    line-height: 35.17vh;
+    text-align: center;
+    padding: 18.7vh;
+}
+
