@@ -4,7 +4,12 @@ const slides = (state = [], action) => {
             return action.payload
         case 'CREATE_SLIDE':
             let newState = [...state, action.payload]
-            newState.forEach( (slide, index) => slide.slideNumber = index + 1)
+            newState.forEach( (slide, index) => {
+                slide.slideNumber = index + 1
+                slide.header = ""
+                slide.content = ""
+                slide.media = ""
+            })
             return newState
         case 'DELETE_SLIDE':
             let delState = state.filter(slide => slide.slideNumber !== action.payload)
@@ -17,6 +22,10 @@ const slides = (state = [], action) => {
         case 'UPDATE_SLIDE_CONTENT':
             let contentUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
             contentUpdatedSlide.content = action.payload.content
+            return state
+        case 'UPDATE_SLIDE_MEDIA':
+            let mediaUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
+            mediaUpdatedSlide.media = action.payload.media
             return state
         case 'ERROR':
             console.log(action.payload)

@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { deleteSlide, updateSlideHeader, updateSlideContent, setCurrentSlide } from '../actions';
+import { deleteSlide, updateSlideHeader, updateSlideContent, updateSlideMedia, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const CWL_YELLOW = "#f2aa27"
@@ -121,15 +121,15 @@ const SlideForm = (props) => {
                                 onClick={() => setEditing("media")}
                                 className="slide-form-field slide-form-media"
                             >
-                                {slides[currentSlide].header}
+                                {slides[currentSlide].media}
                             </div>
                         :
                             <TextField
-                                defaultValue={slides[currentSlide].header}
+                                defaultValue={slides[currentSlide].media}
                                 onBlur={() => setEditing("")}
-                                onChange={(e) => dispatch(updateSlideHeader({
+                                onChange={(e) => dispatch(updateSlideMedia({
                                     slideNumber: slides[currentSlide].slideNumber,
-                                    header: e.target.value
+                                    media: e.target.value
                                 }))}
                                 variant="outlined"
                                 margin="none"

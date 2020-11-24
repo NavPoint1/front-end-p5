@@ -76,17 +76,17 @@ body {
     border: 1px solid #808080;
 }
 
-.slide-form-content {
-    height: 64vh;
-    /* margin-top: 1vh; */
-}
-
 .slide-form-header {
     height: 4vh;
     line-height: 4vh;
 }
 
 .slide-form-media {
-    height: 4vh;
-    line-height: 4vh;
+    height: 36vh;
+    /* line-height: 4vh; */
+}
+
+.slide-form-content {
+    height: 32vh;
+    /* margin-top: 1vh; */
 }
