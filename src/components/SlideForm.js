@@ -64,7 +64,7 @@ const SlideForm = (props) => {
                         ?
                             <div
                                 onClick={() => setEditing("header")}
-                                className="slide-form-field slide-form-header"
+                                className="slide-form-display slide-form-header"
                             >
                                 {slides[currentSlide].header}
                             </div>
@@ -78,8 +78,13 @@ const SlideForm = (props) => {
                                 }))}
                                 variant="outlined"
                                 margin="none"
+                                style={{
+                                    // marginTop: "0.8%",
+                                    marginBottom: "0.1%"
+                                }}
                                 fullWidth
                                 id="slide-field-header"
+                                className="slide-form-field"
                                 label="Header"
                                 name="header"
                                 size="small"
@@ -115,14 +120,16 @@ const SlideForm = (props) => {
                         Delete Slide
                     </Button>
                 </Grid>
-                <Grid item xs={12} /* sm={6} */>
+                <Grid item xs={12} sm={8}>
                     {editing !== "media" 
                         ?
+                            <div className="media-flex-container">
                             <img
                                 src={slides[currentSlide].media}
                                 onClick={() => setEditing("media")}
-                                className="slide-form-field slide-form-media"
+                                className={"slide-form-display slide-form-media " + (slides[currentSlide].media === "" ? "empty-media" : "")}
                             />
+                            </div>
                         :
                             <TextField
                                 defaultValue={slides[currentSlide].media}
@@ -135,10 +142,11 @@ const SlideForm = (props) => {
                                 margin="none"
                                 style={{
                                     // marginTop: "0.8%",
-                                    marginBottom: "0.36%"
+                                    // marginBottom: "0.3%"
                                 }}
                                 fullWidth
                                 id="slide-field-media"
+                                className="slide-form-field"
                                 label="Image URL"
                                 name="media"
                                 autoFocus
@@ -157,12 +165,12 @@ const SlideForm = (props) => {
                             />
                     }
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={4}>
                     {editing !== "content" 
                             ?
                                 <div 
                                     onClick={() => setEditing("content")}
-                                    className="slide-form-field slide-form-content"
+                                    className="slide-form-display slide-form-content"
                                 >
                                     {slides[currentSlide].content}
                                 </div>
@@ -179,15 +187,16 @@ const SlideForm = (props) => {
                                     margin="none"
                                     style={{
                                         // marginTop: "0.8%",
-                                        // marginBottom: "0.05%"
+                                        // marginBottom: "-0.05%"
                                     }}
                                     fullWidth
                                     id="slide-field-content"
+                                    className="slide-form-field"
                                     label="Text Content"
                                     name="content"
                                     multiline
-                                    rows={12}
-                                    rowsMax={12}
+                                    rows={31}
+                                    rowsMax={31}
                                     InputLabelProps={{
                                         classes: {
                                             root: classes.label,

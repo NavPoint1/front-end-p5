@@ -70,7 +70,11 @@ body {
     line-height: 40px;
 }
 
-.slide-form-field {
+/* .slide-form-field {
+    margin-bottom: 0.3%;
+} */
+
+.slide-form-display {
     /* border: 1px solid rgb(242, 170, 39); */
     /* border: 1px solid white; */
     border: 1px solid #808080;
@@ -82,20 +86,33 @@ body {
 }
 
 .slide-form-media {
-    height: 39.17vh;
+    max-height: 69.69vh;
+    max-width: 100%;
+    /* display: block; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: 20%; */
+}
+
+.empty-media {
     width: 100%;
-    /* line-height: 39.17vh;
-    text-align: center; */
+    height: 100%;
 }
 
 .slide-form-content {
-    height: 28.7vh;
+    height: 69.69vh;
     /* margin-top: 1vh; */
 }
 
 #slide-field-media {
-    line-height: 35.17vh;
+    line-height: 69.69vh;
     text-align: center;
-    padding: 18.7vh;
+    padding: 34vh;
 }
 
+.media-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
