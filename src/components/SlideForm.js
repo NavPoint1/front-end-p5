@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import { borders } from '@material-ui/system';
+// import Container from '@material-ui/core/Container';
+// import { borders } from '@material-ui/system';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -54,7 +54,7 @@ const SlideForm = (props) => {
             marginTop={1}
             // height="89%"
         >
-            <Grid container spacing={0}>
+            <Grid container spacing={1}>
                 {/* <Grid item xs={12}>
                     <div>{slides[currentSlide].slideNumber}</div>
                 </Grid> */}
@@ -114,6 +114,46 @@ const SlideForm = (props) => {
                         Delete Slide
                     </Button>
                 </Grid>
+                <Grid item xs={12} /* sm={6} */>
+                    {editing !== "media" 
+                        ?
+                            <div
+                                onClick={() => setEditing("media")}
+                                className="slide-form-field slide-form-media"
+                            >
+                                {slides[currentSlide].header}
+                            </div>
+                        :
+                            <TextField
+                                defaultValue={slides[currentSlide].header}
+                                onBlur={() => setEditing("")}
+                                onChange={(e) => dispatch(updateSlideHeader({
+                                    slideNumber: slides[currentSlide].slideNumber,
+                                    header: e.target.value
+                                }))}
+                                variant="outlined"
+                                margin="none"
+                                fullWidth
+                                id="slide-media-field"
+                                label="Image URL"
+                                name="media"
+                                size="small"
+                                autoFocus
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.label,
+                                        focused: classes.focusedLabel,
+                                    }
+                                }} 
+                                InputProps={{ 
+                                    classes: {
+                                        root: classes.text,
+                                        notchedOutline: classes.notchedOutline,
+                                    }
+                                }}
+                            />
+                    }
+                </Grid>
                 <Grid item xs={12}>
                     {editing !== "content" 
                             ?
@@ -135,7 +175,7 @@ const SlideForm = (props) => {
                                     variant="outlined"
                                     margin="none"
                                     style={{
-                                        marginTop: "0.8%",
+                                        // marginTop: "0.8%",
                                         marginBottom: "-0.1%"
                                     }}
                                     fullWidth
@@ -143,8 +183,8 @@ const SlideForm = (props) => {
                                     label="Text Content"
                                     name="content"
                                     multiline
-                                    rows={31}
-                                    rowsMax={31}
+                                    rows={29}
+                                    rowsMax={29}
                                     InputLabelProps={{
                                         classes: {
                                             root: classes.label,

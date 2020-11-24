@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+// import React, { useEffect } from 'react'
 
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+// import Container from '@material-ui/core/Container';
+// import { borders } from '@material-ui/system';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import { borders } from '@material-ui/system';
-import DeleteIcon from '@material-ui/icons/Delete';
 
-import { deleteSlide, updateSlideHeader, updateSlideContent, setCurrentSlide } from '../actions';
+import { setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const CWL_YELLOW = "#f2aa27"
@@ -23,7 +23,7 @@ const SlidePreview = (props) => {
         <Box
             onClick={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
             border={1}
-            borderColor={props.slide.slideNumber - 1 == currentSlide ? CWL_YELLOW : CWL_LIGHT_GRAY}
+            borderColor={props.slide.slideNumber - 1 === currentSlide ? CWL_YELLOW : CWL_LIGHT_GRAY}
             bgcolor={CWL_PURPLE}
             p={0} 
             marginLeft={1}

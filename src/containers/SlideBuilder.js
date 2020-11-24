@@ -1,14 +1,15 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import { borders } from '@material-ui/system';
+// import TextField from '@material-ui/core/TextField';
+// import { borders } from '@material-ui/system';
+
 import AddIcon from '@material-ui/icons/Add';
 
-import { saveSlide, createSlide, setCurrentSlide } from '../actions';
+import { /* saveSlide, */ createSlide, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideForm from '../components/SlideForm'
@@ -18,25 +19,10 @@ const CWL_LIGHT_GRAY = "#808080"
 
 const SlideBuilder = () => {
     const dispatch = useDispatch();
-    const loggedInUser = useSelector(state => state.loggedInUser);
-    const guide = useSelector(state => state.guide);
+    // const loggedInUser = useSelector(state => state.loggedInUser);
+    // const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const currentSlide = useSelector(state => state.currentSlide)
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-
-        let header = event.target.header.value
-        let user_id = loggedInUser.id
-
-        let newSlide = {
-            header,
-            user_id
-        }
-
-        // dispatch to state
-        dispatch(saveSlide(newSlide))
-    }
 
     const createNewSlide = (event) => {
         event.preventDefault()

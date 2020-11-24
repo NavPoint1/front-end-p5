@@ -77,11 +77,16 @@ body {
 }
 
 .slide-form-content {
-    height: 68.5vh;
-    margin-top: 1vh;
+    height: 64vh;
+    /* margin-top: 1vh; */
 }
 
 .slide-form-header {
+    height: 4vh;
+    line-height: 4vh;
+}
+
+.slide-form-media {
     height: 4vh;
     line-height: 4vh;
 }
