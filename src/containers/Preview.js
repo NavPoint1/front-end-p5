@@ -25,13 +25,14 @@ const Preview = () => {
             mx={0} 
             px={0.5}
             paddingTop={0.5} 
-            width="12%" 
+            width="200px"
+            minWidth="200px"
             style={{
                 overflowY: "scroll",
                 overflowX: "hidden"
             }}
         >
-            {slides.map((slide) => 
+            {slides.length > 0 ? slides.map((slide) => 
                 <Box 
                     display="flex" 
                     bgcolor={slide.slideNumber - 1 === currentSlide ? CWL_LIGHT_GRAY : null}
@@ -54,7 +55,7 @@ const Preview = () => {
                         slide={slide}
                     />
                 </Box>
-            )}
+            ) : null}
         </Box>
     )
 }

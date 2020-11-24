@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
     label: {
         color: CWL_YELLOW
     },
-    root: {
-        "& .MuiFilledInput-root": {
-            background: CWL_PURPLE
-        }
-    },
+    // root: {
+    //     "& .MuiFilledInput-root": {
+    //         background: CWL_PURPLE
+    //     }
+    // },
     text: {
         // color: CWL_YELLOW
         color: "#ffffff"
@@ -123,12 +123,14 @@ const SlideForm = (props) => {
                 <Grid item xs={12} sm={8}>
                     {editing !== "media" 
                         ?
-                            <div className="media-flex-container">
-                            <img
-                                src={slides[currentSlide].media}
+                            <div 
+                                className="flex-container"
                                 onClick={() => setEditing("media")}
-                                className={"slide-form-display slide-form-media " + (slides[currentSlide].media === "" ? "empty-media" : "")}
-                            />
+                            >
+                                <img
+                                    src={slides[currentSlide].media}
+                                    className={"slide-form-display slide-form-media " + (slides[currentSlide].media === "" ? "empty-media" : "")}
+                                />
                             </div>
                         :
                             <TextField

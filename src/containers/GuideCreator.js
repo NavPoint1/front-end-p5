@@ -12,7 +12,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 
 import { createGuide, clearGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,16 +35,17 @@ const useStyles = makeStyles((theme) => ({
         // color: CWL_YELLOW
         color: "#ffffff"
     },
-    notchedOutline: {
-        // borderWidth: '1px',
-        // borderColor: CWL_YELLOW + " !important"
-        borderColor: "#ffffff !important"
-    },
+    // notchedOutline: {
+    //     // borderWidth: '1px',
+    //     // borderColor: CWL_YELLOW + " !important"
+    //     borderColor: "#ffffff !important"
+    // },
   }))
 
 const GuideCreator = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
@@ -63,11 +64,13 @@ const GuideCreator = () => {
 
         // build guide
         let title = event.target.title.value
+        let thumbnail = event.target.thumbnail.value
         let user_id = loggedInUser.id
 
         let newGuide = {
             title,
             user_id,
+            thumbnail,
             // attach slides
             slides
         }
@@ -99,7 +102,7 @@ const GuideCreator = () => {
                             <Container component="main" maxWidth="sm" >
                                 <form onSubmit={handleSubmit} noValidate>
                                     <Grid container spacing={0}>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={12} sm={6}>
                                             <TextField
                                                 variant="filled"
                                                 margin="dense"
@@ -108,6 +111,44 @@ const GuideCreator = () => {
                                                 label="Title"
                                                 name="title"
                                                 autoFocus
+                                                size="small"
+                                                className={classes.root}
+                                                InputLabelProps={{
+                                                    classes: {
+                                                        root: classes.label,
+                                                        focused: classes.focusedLabel,
+                                                    }
+                                                }} 
+                                                InputProps={{ 
+                                                    classes: {
+                                                        root: classes.text,
+                                                        notchedOutline: classes.notchedOutline,
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={6}>
+                                            {/* <div className="flex-container">
+                                                <Button
+                                                    startIcon={<SaveIcon />}
+                                                    name="save"
+                                                    type="submit"
+                                                    variant="contained"
+                                                    color="primary"
+                                                    style={{
+                                                        float: "right"
+                                                    }}
+                                                >
+                                                    Thumbnail
+                                                </Button>
+                                            </div> */}
+                                            <TextField
+                                                variant="filled"
+                                                margin="dense"
+                                                fullWidth
+                                                id="guide-thumbnail-field"
+                                                label="Thumbnail"
+                                                name="thumbnail"
                                                 size="small"
                                                 className={classes.root}
                                                 InputLabelProps={{

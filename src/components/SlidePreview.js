@@ -28,6 +28,7 @@ const SlidePreview = (props) => {
             p={0} 
             marginLeft={1}
             width="85%"
+            // width="85px"
             overflow="hidden"
             style={{
                 fontSize: "3px"

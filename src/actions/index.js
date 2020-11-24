@@ -1,3 +1,5 @@
+import { history } from '../index.js'
+
 const URL = "http://localhost:3000/"
 
 export const login = (user) => {
@@ -30,6 +32,8 @@ export const createGuide = (guide) => {
                     type: "CREATE_GUIDE",
                     payload: data
                 })
+                // redirect to show page with history
+                history.push("/guides/" + data.id)
             }
             else {
                 // print error message

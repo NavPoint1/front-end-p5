@@ -29,7 +29,7 @@ const slides = (state = [], action) => {
             return state
         case 'ERROR':
             console.log(action.payload)
-            return {}
+            return []
         default:
             return state
     }

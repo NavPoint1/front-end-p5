@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+import { Router } from 'react-router';
+import createBrowserHistory from 'history/createBrowserHistory';
+
 // Material UI
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -13,6 +16,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import reducers from './reducers'; // implicitly knows to look in index.js
+
+// require("history").createBrowserHistory
+export const history = createBrowserHistory();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -66,10 +72,12 @@ const theme = createMuiTheme({
 //   const classes = useStyles();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </Provider>
+  <Router history={history}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </Router>
   , document.getElementById('root')
 );

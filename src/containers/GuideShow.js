@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import NotFound from '../components/NotFound'
 
+const URL = "http://localhost:3000"
+
 const GuideShow = () => {
     let { id } = useParams();
     const dispatch = useDispatch();
@@ -41,6 +43,7 @@ const GuideShow = () => {
                         Guide Show
                         <div>{guide.title}</div>
                         <div>by {guide.user.username}</div>
+                        <img src={guide.thumbnail_url ? URL + guide.thumbnail_url : "https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"}/>
                     </div>
                 </>
     )
