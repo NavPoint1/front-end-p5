@@ -178,7 +178,7 @@ const GuideCreator = () => {
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
                                             <div className="author-preview">
-                                                by {loggedInUser.username}
+                                                by {loggedInUser.username.charAt(0).toUpperCase() + loggedInUser.username.slice(1)}
                                             </div>
                                         </Grid>
                                         <Grid item xs={12} sm={4}>

@@ -45,8 +45,9 @@ const SlideForm = (props) => {
 
     return (
         <Box
-            border={1}
-            borderColor={CWL_YELLOW}
+            className="slide-form"
+            // border={1}
+            // borderColor={CWL_YELLOW}
             bgcolor={CWL_PURPLE}
             m={2}
             p={2} 
@@ -59,7 +60,7 @@ const SlideForm = (props) => {
                 {/* <Grid item xs={12}>
                     <div>{slides[currentSlide].slideNumber}</div>
                 </Grid> */}
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={8}>
                     {editing !== "header" 
                         ?
                             <div
@@ -104,11 +105,12 @@ const SlideForm = (props) => {
                             />
                     }
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <Button
                         onClick={() => {
+                            let newCurrentSlide = (currentSlide === slides.length - 1 ? currentSlide - 1 : currentSlide)
                             dispatch(deleteSlide(slides[currentSlide].slideNumber))
-                            dispatch(setCurrentSlide(currentSlide - 1 > 0 ? currentSlide - 1 : 0))
+                            dispatch(setCurrentSlide(newCurrentSlide))
                         }}
                         startIcon={<DeleteIcon />}
                         variant="contained"

@@ -36,17 +36,14 @@ const Preview = () => {
                 <Box 
                     display="flex" 
                     bgcolor={slide.slideNumber - 1 === currentSlide ? CWL_LIGHT_GRAY : null}
-                    minHeight="14%"
-                    maxHeight="14%"
+                    minHeight="100px"
+                    maxHeight="100px"
                     my={0}
                     py={0.5}
                     // mx={0.5}
                 >
                     <div
-                        className="preview-number"
-                        style={{
-                            color: slide.slideNumber - 1 === currentSlide ? CWL_YELLOW : "#FFF"
-                        }}
+                        className={"preview-number " + (slide.slideNumber - 1 === currentSlide ? "preview-number-highlighted" : "")}
                     >
                         {slide.slideNumber}
                     </div>

@@ -22,23 +22,30 @@ const SlidePreview = (props) => {
     return (
         <Box
             onClick={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
-            border={1}
-            borderColor={props.slide.slideNumber - 1 === currentSlide ? CWL_YELLOW : CWL_LIGHT_GRAY}
+            // border={1}
+            className={props.slide.slideNumber - 1 === currentSlide ? "preview-slide-highlighted" : "preview-slide"}
             bgcolor={CWL_PURPLE}
             p={0} 
-            marginLeft={1}
-            width="85%"
-            // width="85px"
-            overflow="hidden"
-            style={{
-                fontSize: "3px"
-            }}
+            // mx={1}
+            width="170px"
+            height="95.625px"
+            // overflow="hidden"
         >
             <Grid container spacing={0}>
-                <Grid item xs={12}>
-                    <div>{props.slide.header}</div>
+                <Grid item xs={12} sm={8}>
+                    <div className="slide-preview slide-preview-header">{props.slide.header}</div>
                 </Grid>
-                <div>{props.slide.content}</div>
+                <Grid item xs={12} sm={4}>
+                    <div></div>
+                </Grid>
+                <Grid item xs={12} sm={8}>
+                    <div className="flex-container">
+                        <img className="slide-preview slide-preview-media" src={props.slide.media} />
+                    </div>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <div className="slide-preview">{props.slide.content}</div>
+                </Grid>
             </Grid>
         </Box>
     )
