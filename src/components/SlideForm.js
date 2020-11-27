@@ -46,8 +46,6 @@ const SlideForm = (props) => {
     return (
         <Box
             className="slide-form"
-            // border={1}
-            // borderColor={CWL_YELLOW}
             bgcolor={CWL_PURPLE}
             m={2}
             p={2} 

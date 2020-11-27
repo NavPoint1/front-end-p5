@@ -40,9 +40,24 @@ const GuideShow = () => {
                             null
                     }
                     <div className="guide-show">
-                        <div>{guide.title}</div>
-                        <div>by {guide.user.username.charAt(0).toUpperCase() + guide.user.username.slice(1)}</div>
-                        <img src={guide.thumbnail_url ? URL + guide.thumbnail_url : "https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"}/>
+                        <div
+                            className="guide-show-title"
+                        >
+                            {guide.title}
+                        </div>
+                        <div
+                            className="guide-show-author"
+                        >
+                            by {guide.user.username.charAt(0).toUpperCase() + guide.user.username.slice(1)}
+                        </div>
+                        <div
+                            className="flex-container"
+                        >
+                            <img
+                                className="guide-show-thumbnail"
+                                src={guide.thumbnail_url ? URL + guide.thumbnail_url : "https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"}
+                            />
+                        </div>
                         <ViewCarousel />
                     </div>
                 </>

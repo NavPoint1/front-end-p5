@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 import Button from '@material-ui/core/Button';
+import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
 
 import { useSelector } from 'react-redux';
 
@@ -15,9 +16,19 @@ const ViewCarousel = () => {
     const [open, setOpen] = useState(false)
     
     return (
-        <div style={{ position: 'relative', width: '100%', height: 500 }}>
-            <Button onClick={() => setOpen(true)}>
-                Open carousel
+        // <div style={{ position: 'relative', width: '100%', height: 500 }}>
+        <div
+            className="flex-container"
+        >
+            <Button
+                className="open-carousel-button"
+                onClick={() => setOpen(true)}
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<ViewCarouselIcon />}
+            >
+                View Guide
             </Button>
             <AutoRotatingCarousel
                 label='Get started'
@@ -31,34 +42,13 @@ const ViewCarousel = () => {
                 {guide.slides.map(slide => 
                     <CarouselSlide
                         key={slide.id}
-                        media={<img src={slide.media} />}
+                        media={slide.media}
                         mediaBackgroundStyle={{ backgroundColor: red[400] }}
                         style={{ backgroundColor: red[600] }}
-                        title={slide.header}
-                        subtitle={slide.content}
+                        header={slide.header}
+                        content={slide.content}
                     />
                 )}
-                {/* <CarouselSlide
-                media={<img src='http://www.icons101.com/icon_png/size_256/id_79394/youtube.png' />}
-                mediaBackgroundStyle={{ backgroundColor: red[400] }}
-                style={{ backgroundColor: red[600] }}
-                title='This is a very cool feature'
-                subtitle='Just using this will blow your mind.'
-                />
-                <CarouselSlide
-                media={<img src='http://www.icons101.com/icon_png/size_256/id_80975/GoogleInbox.png' />}
-                mediaBackgroundStyle={{ backgroundColor: blue[400] }}
-                style={{ backgroundColor: blue[600] }}
-                title='Ever wanted to be popular?'
-                subtitle='Well just mix two colors and your are good to go!'
-                />
-                <CarouselSlide
-                media={<img src='http://www.icons101.com/icon_png/size_256/id_76704/Google_Settings.png' />}
-                mediaBackgroundStyle={{ backgroundColor: green[400] }}
-                style={{ backgroundColor: green[600] }}
-                title='May the force be with you'
-                subtitle='The Force is a metaphysical and ubiquitous power in the Star Wars fictional universe.'
-                /> */}
             </AutoRotatingCarousel>
         </div>
     )

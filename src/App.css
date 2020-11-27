@@ -8,6 +8,7 @@ body {
     width: 100%;
     overflow: hidden;
     background-color: rgb(17, 17, 17);
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg");
     /* color: #f2aa27; */
     color: white;
 }
@@ -166,3 +167,68 @@ body {
     text-align: center;
     line-height: 40px;
 }
+
+.carousel-slide-container {
+    background: #2d192d;
+    height: 96%;
+    width: 98%;
+    padding: 1%;
+    overflow: hidden;
+}
+
+.carousel-slide-header {
+    height: 8vh;
+    line-height: 8vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+}
+
+.carousel-slide-media {
+    height: 68.5vh;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.carousel-slide-content {
+    height: 66.4vh;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.AutoRotatingCarousel-footer-12 button{
+    display: none;
+}
+
+/* .guide-show {
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg");
+    height: 90%;
+} */
+
+.guide-show-title {
+    text-align: center;
+    font-size: 5rem;
+    text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
+    margin-top: 1%;
+}
+
+.guide-show-author {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.guide-show-thumbnail {
+    max-width: 20%;
+    max-height: 20%;
+    margin: 1%;
+    border: 2px solid #f2aa27;
+    border-radius: 10px;
+}
+
+/* .open-carousel-button {
+    margin:
+} */
