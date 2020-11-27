@@ -79,32 +79,26 @@ body {
 .slide-form-header {
     height: 4vh;
     line-height: 4vh;
-    /* padding-left: 10px;
-    padding-right: 10px; */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
     text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
-    /* text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; */
     text-align: center;
+    border-radius: 10px;
 }
 
 .slide-form-media {
     height: 68.5vh;
     max-width: 100%;
-    /* display: block; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* margin-top: 20%; */
+    border-radius: 10px;
 }
 
 .slide-form-content {
     height: 66.4vh;
-    /* margin-top: 1vh; */
     padding: 10px;
+    border-radius: 10px;
 }
 
 #slide-field-media {
-    /* line-height: 66.5vh; */
     text-align: center;
     padding-top: 33.37vh;
     padding-bottom: 33.37vh;
