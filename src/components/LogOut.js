@@ -3,8 +3,10 @@ import React from 'react'
 const LogOut = () => {
 
     return (
-        <div className="logout-page">
-            You have been logged out.
+        <div className="default-container">
+            <div className="logout-page">
+                You have been logged out.
+            </div>
         </div>
     )
 }

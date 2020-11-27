@@ -7,7 +7,7 @@ const ProfileContainer = () => {
     const loggedInUser = useSelector(state => state.loggedInUser);
 
     return (
-        <div className="profile-container">
+        <div className="default-container profile-container">
             Profile
             {loggedInUser.username}
             {loggedInUser.id}

@@ -88,7 +88,7 @@ const GuideCreator = () => {
                 ?
                     <Redirect to={"/guides/" + guide.id} />
                 :
-                    <div id="guide-creator">
+                    <div id="guide-creator-container">
                         <Box 
                             // border={1} 
                             p={1} 
@@ -104,7 +104,7 @@ const GuideCreator = () => {
                                     <Grid container spacing={0}>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
-                                                variant="filled"
+                                                variant="outlined"
                                                 margin="dense"
                                                 fullWidth
                                                 id="guide-title-field"
@@ -143,7 +143,7 @@ const GuideCreator = () => {
                                                 </Button>
                                             </div> */}
                                             <TextField
-                                                variant="filled"
+                                                variant="outlined"
                                                 margin="dense"
                                                 fullWidth
                                                 id="guide-thumbnail-field"

@@ -3,15 +3,32 @@ body {
 }
 
 #App {
+    color: white;
     position: absolute;
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: rgb(17, 17, 17);
-    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg");
-    /* color: #f2aa27; */
-    color: white;
+    /* background-color: rgb(17, 17, 17); */
+    /* background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"); */
+    /* opacity: 0.75; */
+    /* background-image: url("https://cdn.discordapp.com/attachments/378743051494883331/781958281190440970/Illidan_1_-_Background.png"); */
+    /* background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
 }
+
+/* #App::before {
+    content: "";
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), radial-gradient(#f2aa27, #2d192d);
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#000, #808080);
+    background-blend-mode: overlay;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+} */
 
 #navbar {
     display: flex;
@@ -57,10 +74,6 @@ body {
     font-weight: bold;
 }
 
-#guide-creator {
-    height: 100%;
-}
-
 .empty-media {
     width: 100%;
     height: 100%;
@@ -69,6 +82,7 @@ body {
 .slide-form {
     border: 1px solid #f2aa27;
     border-radius: 10px;
+    opacity: 0.95;
 }
 
 .slide-form-display {
@@ -169,7 +183,11 @@ body {
 }
 
 .carousel-slide-container {
-    background: #2d192d;
+    /* background: #2d192d; */
+    content: "";
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
+    background-blend-mode: multiply;
+    z-index: -1;
     height: 96%;
     width: 98%;
     padding: 1%;
@@ -204,11 +222,6 @@ body {
     display: none;
 }
 
-/* .guide-show {
-    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg");
-    height: 90%;
-} */
-
 .guide-show-title {
     text-align: center;
     font-size: 5rem;
@@ -229,6 +242,63 @@ body {
     border-radius: 10px;
 }
 
-/* .open-carousel-button {
-    margin:
-} */
+.login-form-wrapper {
+    background-color:  rgb(17, 17, 17);
+    border: 3px solid #f2aa27;
+    border-radius: 800px;
+    width: 580px;
+    margin-top: 5%;
+    opacity: 0.94;
+}
+
+.login-form-inner-wrapper {
+    margin-top: -15%;
+    padding: 50px;
+}
+
+.signup-page-container::before {
+    content: "";
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/27dbbda7-320b-488b-b8cb-6d993296f095/dcyq8ww-8e6deeff-13f9-4964-8584-f4eccd44353a.png/v1/fill/w_1280,h_903,strp/captain_falcon_using_the_knee_of_justice_by_transparentjiggly64_dcyq8ww-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD05MDMiLCJwYXRoIjoiXC9mXC8yN2RiYmRhNy0zMjBiLTQ4OGItYjhjYi02ZDk5MzI5NmYwOTVcL2RjeXE4d3ctOGU2ZGVlZmYtMTNmOS00OTY0LTg1ODQtZjRlY2NkNDQzNTNhLnBuZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.7e8bL3KiNglmm73SEzasyZznn9oY1QMtFncdfQ2Rqcc"), radial-gradient(#f2aa27, #2d192d);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.login-page-container::before {
+    content: "";
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), radial-gradient(#f2aa27, #2d192d);
+    /* background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#000, #808080); */
+    background-blend-mode: overlay;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+#guide-creator-container{
+    height: 100%;
+    content: "";
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
+    background-blend-mode: multiply;
+    z-index: -1;
+}
+
+.default-container::before {
+    content: "";
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
+    background-blend-mode: multiply;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    padding: 50px;
+}

@@ -115,96 +115,104 @@ export default function LoginForm() {
       ?
         <Redirect to="/" />
       :
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form onSubmit={handleSubmit} className={classes.form} noValidate>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                InputLabelProps={{
-                  classes: {
-                      root: classes.label,
-                      focused: classes.focusedLabel,
-                  }
-                }} 
-                InputProps={{ 
-                    classes: {
-                        root: classes.text,
-                        notchedOutline: classes.notchedOutline,
-                    }
-                }}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                InputLabelProps={{
-                  classes: {
-                      root: classes.label,
-                      focused: classes.focusedLabel,
-                  }
-                }} 
-                InputProps={{ 
-                    classes: {
-                        root: classes.text,
-                        notchedOutline: classes.notchedOutline,
-                    }
-                }}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                {/* <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid> */}
-                <Grid item>
-                  <RouteLink to="/register" variant="body2">
-                    <Typography
-                      className={classes.text}
-                    >
-                      Don't have an account? Sign Up
+        <div className="login-page-container">
+          <div className="flex-container">
+            <div className="login-form-wrapper">
+              <div className="login-form-inner-wrapper">
+                <Container component="main" maxWidth="xs">
+                  <CssBaseline />
+                  <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                      <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                      Sign in
                     </Typography>
-                  </RouteLink>
-                </Grid>
-              </Grid>
-            </form>
+                    <form onSubmit={handleSubmit} className={classes.form} noValidate>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                        InputLabelProps={{
+                          classes: {
+                              root: classes.label,
+                              focused: classes.focusedLabel,
+                          }
+                        }} 
+                        InputProps={{ 
+                            classes: {
+                                root: classes.text,
+                                notchedOutline: classes.notchedOutline,
+                            }
+                        }}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        InputLabelProps={{
+                          classes: {
+                              root: classes.label,
+                              focused: classes.focusedLabel,
+                          }
+                        }} 
+                        InputProps={{ 
+                            classes: {
+                                root: classes.text,
+                                notchedOutline: classes.notchedOutline,
+                            }
+                        }}
+                      />
+                      <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                      />
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                      >
+                        Sign In
+                      </Button>
+                      <Grid container>
+                        {/* <Grid item xs>
+                          <Link href="#" variant="body2">
+                            Forgot password?
+                          </Link>
+                        </Grid> */}
+                        <Grid item>
+                          <RouteLink to="/register" variant="body2">
+                            <Typography
+                              className={classes.text}
+                            >
+                              Don't have an account? Sign Up
+                            </Typography>
+                          </RouteLink>
+                        </Grid>
+                      </Grid>
+                    </form>
+                  </div>
+                  <Box mt={8}>
+                    <Copyright />
+                  </Box>
+                </Container>
+              </div>
+            </div>
           </div>
-          <Box mt={8}>
-            <Copyright />
-          </Box>
-        </Container>
+        </div>
   );
 }

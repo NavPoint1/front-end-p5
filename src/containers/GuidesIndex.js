@@ -3,8 +3,10 @@ import React from 'react'
 const GuidesIndex = () => {
 
     return (
-        <div className="guides-index">
-            Index
+        <div className="default-container">
+            <div className="guides-index">
+                Index
+            </div>
         </div>
     )
 }
