@@ -8,27 +8,7 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    /* background-color: rgb(17, 17, 17); */
-    /* background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"); */
-    /* opacity: 0.75; */
-    /* background-image: url("https://cdn.discordapp.com/attachments/378743051494883331/781958281190440970/Illidan_1_-_Background.png"); */
-    /* background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; */
 }
-
-/* #App::before {
-    content: "";
-    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), radial-gradient(#f2aa27, #2d192d);
-    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#000, #808080);
-    background-blend-mode: overlay;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    z-index: -1;
-} */
 
 #navbar {
     display: flex;
@@ -41,8 +21,6 @@ body {
 
 #home-container {
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
 }
 
 #home {
@@ -94,7 +72,7 @@ body {
 .slide-form-header {
     height: 4vh;
     line-height: 4vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Garamond;
     font-size: 2rem;
     text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
     text-align: center;
@@ -111,6 +89,7 @@ body {
     height: 66.4vh;
     padding: 10px;
     border-radius: 10px;
+    font-family: Helvetica;
 }
 
 #slide-field-media {
@@ -197,25 +176,30 @@ body {
 .carousel-slide-header {
     height: 8vh;
     line-height: 8vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Garamond;
     font-size: 4rem;
     text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
     text-align: center;
     border-radius: 10px;
     color: white;
+    background: rgba(17, 17, 17, 0.6);
 }
 
 .carousel-slide-media {
-    height: 68.5vh;
+    height: 71.48vh;
     max-width: 100%;
     border-radius: 10px;
 }
 
 .carousel-slide-content {
-    height: 66.4vh;
-    padding: 10px;
+    height: 68.4vh;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
     border-radius: 10px;
     color: white;
+    background: rgba(17, 17, 17, 0.6);
+    font-family: Helvetica;
 }
 
 .AutoRotatingCarousel-footer-12 button{

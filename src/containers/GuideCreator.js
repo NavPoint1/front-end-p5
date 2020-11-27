@@ -35,11 +35,11 @@ const useStyles = makeStyles((theme) => ({
         // color: CWL_YELLOW
         color: "#ffffff"
     },
-    // notchedOutline: {
-    //     // borderWidth: '1px',
-    //     // borderColor: CWL_YELLOW + " !important"
-    //     borderColor: "#ffffff !important"
-    // },
+    notchedOutline: {
+        // borderWidth: '1px',
+        borderColor: CWL_YELLOW + " !important"
+        // borderColor: "#ffffff !important"
+    },
   }))
 
 const GuideCreator = () => {

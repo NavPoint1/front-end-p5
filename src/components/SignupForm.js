@@ -46,6 +46,7 @@ function Copyright() {
     avatar: {
       margin: theme.spacing(1),
       backgroundColor: theme.palette.secondary.main,
+      color: CWL_YELLOW
     },
     form: {
       width: '100%', // Fix IE 11 issue.

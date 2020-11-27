@@ -9,8 +9,12 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm'
+
 import { deleteSlide, updateSlideHeader, updateSlideContent, updateSlideMedia, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+
 
 const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"
@@ -174,7 +178,7 @@ const SlideForm = (props) => {
                                     onClick={() => setEditing("content")}
                                     className="slide-form-display slide-form-content"
                                 >
-                                    {slides[currentSlide].content}
+                                    <ReactMarkdown plugins={[gfm]} children={slides[currentSlide].content} />
                                 </div>
                             :
                                 <TextField
