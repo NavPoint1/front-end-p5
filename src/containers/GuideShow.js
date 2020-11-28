@@ -37,7 +37,9 @@ const GuideShow = () => {
                                 Edit
                             </Button>
                         :
-                            null
+                            <Button>
+                                Like
+                            </Button>
                     }
                     <div className="default-container guide-show-container">
                         <div>

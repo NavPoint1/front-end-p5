@@ -35,20 +35,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CarouselSlide = (props) => {
     const classes = useStyles();
-    // const { red } = require('@material-ui/core/colors');
-
-    // const styles = {
-    // root: {
-    //     backgroundColor: red[600],
-    //     // height: 400,
-    //     // width: 800
-    // },
-    // media: {
-    //     backgroundColor: red[400]
-    // }
-    // }
-
-    // const StyledSlide = withStyles(styles)(Slide);
 
     return(
 
@@ -73,14 +59,6 @@ const CarouselSlide = (props) => {
                 </Grid>
             </Grid>        
         </Box>
-        // <StyledSlide
-        //     media={props.media}
-        //     title={props.title}
-        //     subtitle={props.subtitle}
-        //     mobile
-        //     landscape
-        //     ButtonProps="disabled"
-        // />
     )
 }
 
