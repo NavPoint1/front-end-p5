@@ -43,7 +43,7 @@ const SlideForm = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const slides = useSelector(state => state.slides);
-    const currentSlide = useSelector(state => state.currentSlide)
+    const currentSlide = useSelector(state => state.currentSlide);
 
     const [editing, setEditing] = useState("")
 
@@ -56,12 +56,9 @@ const SlideForm = (props) => {
             paddingTop={1}
             paddingBottom={1}
             marginTop={1}
-            // height="89%"
+            height="75vh"
         >
             <Grid container spacing={1}>
-                {/* <Grid item xs={12}>
-                    <div>{slides[currentSlide].slideNumber}</div>
-                </Grid> */}
                 <Grid item xs={12} sm={8}>
                     {editing !== "header" 
                         ?
@@ -81,10 +78,6 @@ const SlideForm = (props) => {
                                 }))}
                                 variant="outlined"
                                 margin="none"
-                                style={{
-                                    // marginTop: "0.8%",
-                                    marginBottom: "0.1%"
-                                }}
                                 fullWidth
                                 id="slide-field-header"
                                 className="slide-form-field"

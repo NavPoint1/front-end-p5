@@ -33,14 +33,21 @@ const GuideShow = () => {
                 <>
                     {guide.user.id === loggedInUser.id
                         ?
-                            <Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                            >
                                 Edit
                             </Button>
                         :
-                            <Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                            >
                                 Like
                             </Button>
                     }
+                    <div>Views: {guide.views}</div>
                     <div className="default-container guide-show-container">
                         <div>
                             <div

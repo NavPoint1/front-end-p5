@@ -1,7 +1,7 @@
 const slides = (state = [], action) => {
     switch(action.type) {
-        case 'SAVE_SLIDE':
-            return action.payload
+        // case 'SAVE_SLIDE':
+        //     return action.payload
         case 'CREATE_SLIDE':
             let newState = [...state, action.payload]
             newState.forEach( (slide, index) => {

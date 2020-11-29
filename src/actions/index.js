@@ -117,31 +117,54 @@ export const setCurrentSlide = (slide) => {
     }
 }
 
-export const saveSlide = (slide) => {
+export const loadGuides = () => {
     return(dispatch) => {
-        fetch(URL + "slides", {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(slide)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.id) {
-                // store slide in state to render in preview
-                dispatch({
-                    type: "SAVE_SLIDE",
-                    payload: data
-                })
-            }
-            else {
-                // print error message
-                dispatch({
-                    type: "ERROR",
-                    payload: data
-                })
-            }
-        })
+        fetch(URL + "guides/")
+            .then(res => res.json())
+            .then(data => {
+                if(data.length) {
+                    // store guides in state
+                    dispatch({
+                        type: "LOAD_GUIDES",
+                        payload: data
+                    })
+                }
+                else {
+                    // print error message
+                    dispatch({
+                        type: "ERROR",
+                        payload: data
+                    })
+                }
+            })
     }
 }
+
+// export const saveSlide = (slide) => {
+//     return(dispatch) => {
+//         fetch(URL + "slides", {
+//             method: 'POST',
+//             headers: {
+//             'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(slide)
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             if(data.id) {
+//                 // store slide in state to render in preview
+//                 dispatch({
+//                     type: "SAVE_SLIDE",
+//                     payload: data
+//                 })
+//             }
+//             else {
+//                 // print error message
+//                 dispatch({
+//                     type: "ERROR",
+//                     payload: data
+//                 })
+//             }
+//         })
+//     }
+// }
