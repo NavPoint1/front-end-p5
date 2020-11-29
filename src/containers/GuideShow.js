@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
 
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+
 import { Redirect, useParams } from 'react-router-dom'
 
 // import { editGuide } from '../actions';
@@ -30,7 +32,7 @@ const GuideShow = () => {
             ?
                 <NotFound />
             :
-                <>
+                <div className="default-container guide-show-container">
                     {guide.user.id === loggedInUser.id
                         ?
                             <Button
@@ -40,15 +42,16 @@ const GuideShow = () => {
                                 Edit
                             </Button>
                         :
-                            <Button
-                                variant="contained"
-                                color="primary"
-                            >
-                                Like
-                            </Button>
+                            <>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    startIcon={<ThumbUpIcon />}
+                                />
+                                <div>Likes: {guide.likes}</div>
+                            </>
                     }
                     <div>Views: {guide.views}</div>
-                    <div className="default-container guide-show-container">
                         <div>
                             <div
                                 className="guide-show-title"
@@ -70,8 +73,7 @@ const GuideShow = () => {
                             </div>
                             <ViewCarousel />
                         </div>
-                    </div>
-                </>
+                </div>
     )
 }
 
