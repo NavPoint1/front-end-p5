@@ -198,7 +198,7 @@ const GuideCreator = () => {
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12}>
-                                                <div>
+                                                <div className="guide-creator-errors">
                                                     {errors} 
                                                 </div>
                                         </Grid>
