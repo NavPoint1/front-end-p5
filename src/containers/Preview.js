@@ -35,6 +35,7 @@ const Preview = () => {
         >
             {slides.length > 0 ? slides.map((slide) => 
                 <Box 
+                    key={slide.slideNumber}
                     display="flex" 
                     bgcolor={slide.slideNumber - 1 === currentSlide ? CWL_LIGHT_GRAY : null}
                     minHeight="100px"

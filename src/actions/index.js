@@ -39,7 +39,7 @@ export const createGuide = (guide) => {
                 // print error message
                 dispatch({
                     type: "ERROR",
-                    payload: data
+                    payload: data[0] + "."
                 })
             }
         })

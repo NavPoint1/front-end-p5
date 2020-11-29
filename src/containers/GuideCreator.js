@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Redirect, useHistory } from 'react-router-dom'
 
-import { createGuide, clearGuide } from '../actions';
+import { createGuide, clearGuide, clearErrors } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideBuilder from './SlideBuilder'
@@ -49,6 +49,7 @@ const GuideCreator = () => {
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
+    const errors = useSelector(state => state.errors);
 
     const [loaded, setLoaded] = useState(false)
 
@@ -57,6 +58,7 @@ const GuideCreator = () => {
             dispatch(clearGuide())
         }
         setLoaded(true)
+        return dispatch(clearErrors());
     },[])
 
     const handleSubmit = (event) => {
@@ -194,6 +196,11 @@ const GuideCreator = () => {
                                             >
                                                 PUBLISH
                                             </Button>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                                <div>
+                                                    {errors} 
+                                                </div>
                                         </Grid>
                                     </Grid>
                                 </form>
