@@ -96,7 +96,7 @@ const GuideTile = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={2}>
                                         <Typography variant="body2" color="white" component="p">
-                                            {props.guide.likes}
+                                            {props.guide.likes.length}
                                         </Typography>
                                     </Grid>
                                 </Grid>

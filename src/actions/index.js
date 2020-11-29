@@ -75,6 +75,34 @@ export const clearGuide = () => {
     }
 }
 
+export const likeGuide = (guideId, userId) => {
+    let reqPackage = {};
+    reqPackage.method = 'POST';
+    reqPackage.headers = { 'Content-Type': 'application/json' };
+    reqPackage.body = JSON.stringify({
+        guide_id: guideId
+    });
+    return(dispatch) => {
+        fetch(URL + "users/" + userId + "/like", reqPackage)
+        .then(res => res.json())
+        .then(data => {
+            if(data.id) {
+                dispatch({
+                    type: "LIKE_GUIDE_TOGGLE",
+                    payload: data
+                })
+            }
+            else {
+                // print error message
+                dispatch({
+                    type: "ERROR",
+                    payload: data
+                })
+            }
+        })
+    }
+}
+
 export const createSlide = (newSlide) => {
     return {
         type: "CREATE_SLIDE",

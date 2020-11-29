@@ -5,6 +5,8 @@ const guide = (state = {}, action) => {
             return action.payload
         case 'LOAD_GUIDE':
             return action.payload
+        case 'LIKE_GUIDE_TOGGLE':
+            return action.payload
         case 'CLEAR_GUIDE':
             return {}
         case 'ERROR':

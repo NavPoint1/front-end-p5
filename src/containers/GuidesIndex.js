@@ -17,7 +17,7 @@ const GuidesIndex = () => {
 
     useEffect(() => {
         dispatch(clearGuide())
-        dispatch(clearGuides())
+        // dispatch(clearGuides())
         dispatch(loadGuides())
     },[])
 
