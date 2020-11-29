@@ -67,7 +67,7 @@ const SlideBuilder = () => {
                 marginLeft={1}
                 py={1} 
                 width="90%" 
-                // height="97.7%"
+                height="79.7vh"
             >
             <Container component="main" maxWidth="xl">
                 <Grid container spacing={2}>

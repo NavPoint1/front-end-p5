@@ -7,11 +7,13 @@ const ProfileContainer = () => {
     const loggedInUser = useSelector(state => state.loggedInUser);
 
     return (
-        <div className="default-container profile-container">
-            Profile
-            {loggedInUser.username}
-            {loggedInUser.id}
-            {loggedInUser.email}
+        <div className="default-container">
+            <div className="profile-container">
+                Profile
+                {loggedInUser.username}
+                {loggedInUser.id}
+                {loggedInUser.email}
+            </div>
         </div>
     )
 }

@@ -56,7 +56,7 @@ const SlideForm = (props) => {
             paddingTop={1}
             paddingBottom={1}
             marginTop={1}
-            height="75vh"
+            height="73.5vh"
         >
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={8}>

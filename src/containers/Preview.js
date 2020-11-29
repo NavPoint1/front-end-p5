@@ -27,6 +27,7 @@ const Preview = () => {
             paddingTop={0.5} 
             width="200px"
             minWidth="200px"
+            maxHeight="81vh"
             style={{
                 overflowY: "scroll",
                 overflowX: "hidden"
