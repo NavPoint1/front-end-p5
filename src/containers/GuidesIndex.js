@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import { loadGuides, clearGuide } from '../actions';
+import { loadGuides, clearGuide, clearGuides } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import GuideTile from '../components/GuideTile'
@@ -17,10 +17,8 @@ const GuidesIndex = () => {
 
     useEffect(() => {
         dispatch(clearGuide())
-        if (guides.length === 0) {
-            dispatch(loadGuides())
-            // dispatch(loadGuides(currentPage))
-        }
+        dispatch(clearGuides())
+        dispatch(loadGuides())
     },[])
 
     return (

@@ -7,7 +7,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { Redirect, useParams } from 'react-router-dom'
 
 // import { editGuide } from '../actions';
-import { loadGuide } from '../actions';
+import { loadGuide, clearGuides } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import NotFound from '../components/NotFound'
@@ -42,14 +42,20 @@ const GuideShow = () => {
                                 Edit
                             </Button>
                         :
-                            <>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    startIcon={<ThumbUpIcon />}
-                                />
-                                <div>Likes: {guide.likes}</div>
-                            </>
+                            null
+                    }
+                    {guide.user.id !== loggedInUser.id && Object.keys(loggedInUser).length > 0
+                        ?
+                        <>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<ThumbUpIcon />}
+                            />
+                            <div>Likes: {guide.likes}</div>
+                        </>
+                        :
+                            null
                     }
                     <div>Views: {guide.views}</div>
                         <div>

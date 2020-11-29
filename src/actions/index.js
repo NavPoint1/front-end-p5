@@ -117,6 +117,12 @@ export const setCurrentSlide = (slide) => {
     }
 }
 
+export const clearGuides = () => {
+    return {
+        type: "CLEAR_GUIDES",
+    }
+}
+
 export const loadGuides = () => {
     return(dispatch) => {
         fetch(URL + "guides/")
