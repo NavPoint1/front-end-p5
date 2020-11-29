@@ -66,8 +66,6 @@ body {
 }
 
 .slide-form-display {
-    /* border: 1px solid rgb(242, 170, 39); */
-    /* border: 1px solid white; */
     border: 1px solid #808080;
 }
 
@@ -120,7 +118,6 @@ body {
 .slide-preview-header {
     text-align: center;
     font-size: 6px;
-    /* text-shadow: -0.01px 0 #f2aa27, 0 0.01px #f2aa27, 0.01px 0 #f2aa27, 0 -0.01px #f2aa27; */
 }
 
 .slide-preview-media {
@@ -164,7 +161,6 @@ body {
 }
 
 .carousel-slide-container {
-    /* background: #2d192d; */
     content: "";
     background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
     background-blend-mode: multiply;
@@ -202,10 +198,6 @@ body {
     color: white;
     background: rgba(17, 17, 17, 0.6);
     font-family: Helvetica;
-}
-
-.AutoRotatingCarousel-footer-12 button{
-    display: none;
 }
 
 .login-form-wrapper {
@@ -352,10 +344,6 @@ body {
 }
 
 .guide-show-like-container {
-    /* padding: 50px; */
-    /* position: absolute;
-    right: 0;
-    bottom: 0; */
     width: 30%;
     display: flex;
     align-items: center;
@@ -387,4 +375,18 @@ body {
 
 .profile-container {
     padding-top: 52px;
+}
+
+.login-signup-redirect {
+    text-decoration: none;
+}
+
+.auto-rotating-carousel-button {
+    display: none !important;
+}
+
+.login-errors {
+    font-size: 0.8rem;
+    color: "#808080";
+    /* margin-bottom: -10px; */
 }

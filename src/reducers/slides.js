@@ -1,7 +1,7 @@
 const slides = (state = [], action) => {
     switch(action.type) {
-        // case 'SAVE_SLIDE':
-        //     return action.payload
+        case 'LOGOUT':
+            return []
         case 'CREATE_SLIDE':
             let newState = [...state, action.payload]
             newState.forEach( (slide, index) => {
@@ -27,9 +27,6 @@ const slides = (state = [], action) => {
             let mediaUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
             mediaUpdatedSlide.media = action.payload.media
             return state
-        case 'ERROR':
-            console.log(action.payload)
-            return []
         default:
             return state
     }

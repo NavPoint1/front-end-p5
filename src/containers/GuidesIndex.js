@@ -23,7 +23,9 @@ const GuidesIndex = () => {
 
     return (
         <div className="default-container guides-index-page">
-            <div className="flex-container guides-index-page-header">Index</div>
+            <div className="flex-container guides-index-page-header">
+                Index
+            </div>
             <div className="guides-index-container">
                 <Grid container spacing={2}>
                     {guides.map(guide => <GuideTile key={guide.id} guide={guide} /> )}

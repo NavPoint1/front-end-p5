@@ -9,8 +9,7 @@ const guide = (state = {}, action) => {
             return action.payload
         case 'CLEAR_GUIDE':
             return {}
-        case 'ERROR':
-            console.log(action.payload)
+        case 'LOGOUT':
             return {}
         default:
             return state

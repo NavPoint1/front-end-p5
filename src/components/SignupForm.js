@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { login } from '../actions';
+import { login, clearErrors } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 const URL = "http://localhost:3000/"
@@ -76,6 +76,11 @@ function Copyright() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
+    const errors = useSelector(state => state.errors);
+
+    useEffect(() => {
+      return dispatch(clearErrors());
+    }, [])
 
     const handleSubmit = (event) => {
       event.preventDefault()
@@ -106,6 +111,10 @@ function Copyright() {
           }
           else {
             // print error message
+            dispatch({
+              type: "ERROR",
+              payload: data[0] + "."
+            })
             console.log(data)
           }
         })
@@ -208,6 +217,11 @@ function Copyright() {
                           />
                         </Grid> */}
                       </Grid>
+                      <div
+                        className="login-errors"
+                      >
+                        {errors}
+                      </div>
                       <Button
                         type="submit"
                         fullWidth
@@ -219,8 +233,12 @@ function Copyright() {
                       </Button>
                       <Grid container justify="flex-end">
                         <Grid item>
-                          <RouteLink to="/login" variant="body2">
-                              Already have an account? Sign in
+                          <RouteLink className="login-signup-redirect" to="/login" variant="body2">
+                            <Typography
+                                className={classes.text}
+                              >
+                                Already have an account? Sign in
+                              </Typography>
                           </RouteLink>
                         </Grid>
                       </Grid>

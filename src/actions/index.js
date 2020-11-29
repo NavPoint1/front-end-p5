@@ -174,6 +174,12 @@ export const loadGuides = () => {
     }
 }
 
+export const clearErrors = () => {
+    return {
+        type: "CLEAR_ERRORS"
+    }
+}
+
 // export const saveSlide = (slide) => {
 //     return(dispatch) => {
 //         fetch(URL + "slides", {

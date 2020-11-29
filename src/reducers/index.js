@@ -4,6 +4,7 @@ import guide from './guide'
 import guides from './guides'
 import slides from './slides'
 import currentSlide from './currentSlide'
+import errors from './errors'
 
 const reducers = combineReducers({
     loggedInUser: login,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
     guides,
     slides,
     currentSlide,
+    errors
 });
 
 export default reducers;

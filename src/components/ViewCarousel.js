@@ -31,6 +31,7 @@ const ViewCarousel = () => {
                 View Guide
             </Button>
             <AutoRotatingCarousel
+                ButtonProps={{className: "auto-rotating-carousel-button"}}
                 label='Get started'
                 open={open}
                 onClose={() => setOpen(false)}

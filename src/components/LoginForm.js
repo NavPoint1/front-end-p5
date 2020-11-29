@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { login } from '../actions';
+import { login, clearErrors } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 const URL = "http://localhost:3000/"
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       }
   },
   text: {
-      color: CWL_YELLOW
+      color: CWL_YELLOW,
   },
   notchedOutline: {
       // borderWidth: '1px',
@@ -76,6 +76,11 @@ export default function LoginForm() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const loggedInUser = useSelector(state => state.loggedInUser);
+  const errors = useSelector(state => state.errors);
+
+  useEffect(() => {
+    return dispatch(clearErrors());
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -106,6 +111,10 @@ export default function LoginForm() {
         }
         else {
           // print error message
+          dispatch({
+            type: "ERROR",
+            payload: data
+          })
           console.log(data)
         }
       })
@@ -176,10 +185,11 @@ export default function LoginForm() {
                             }
                         }}
                       />
-                      <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                      />
+                      <div
+                        className="login-errors"
+                      >
+                        {errors}
+                      </div>
                       <Button
                         type="submit"
                         fullWidth
@@ -196,7 +206,7 @@ export default function LoginForm() {
                           </Link>
                         </Grid> */}
                         <Grid item>
-                          <RouteLink to="/register" variant="body2">
+                          <RouteLink className={"login-signup-redirect"} to="/register" variant="body2">
                             <Typography
                               className={classes.text}
                             >

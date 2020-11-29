@@ -4,9 +4,6 @@ const guides = (state = [], action) => {
             return action.payload
         case 'CLEAR_GUIDES':
             return []
-        case 'ERROR':
-            console.log(action.payload)
-            return []
         default:
             return state
     }
