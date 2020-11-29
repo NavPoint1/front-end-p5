@@ -75,27 +75,43 @@ const GuideTile = (props) => {
                                         paddingTop: '10px',
                                     }}
                                 >
-                                    <Grid item xs={12} sm={2}>
-                                        <VisibilityIcon 
+                                    <Grid item xs={12} sm={1}>
+                                        <VisibilityIcon
+                                            edge="end" 
                                             style={{
                                                 marginTop: '-3px'
                                             }}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={2}>
-                                        <Typography variant="body2" color="white" component="p">
+                                    <Grid item xs={12} sm={3}>
+                                        <Typography 
+                                            variant="body2" 
+                                            color="white" 
+                                            component="p"
+                                            style={{
+                                                paddingLeft: '2px'
+                                            }}
+                                        >
                                             {props.guide.views}
                                         </Typography>
                                     </Grid>
-                                    <Grid item xs={12} sm={2}>
+                                    <Grid item xs={12} sm={1}>
                                         <ThumbUpIcon 
+                                            // edge="end" 
                                             style={{
                                                 marginTop: '-3px'
                                             }}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={2}>
-                                        <Typography variant="body2" color="white" component="p">
+                                        <Typography 
+                                            variant="body2" 
+                                            color="white" 
+                                            component="p"
+                                            style={{
+                                                paddingLeft: '4px'
+                                            }}
+                                        >
                                             {props.guide.likes.length}
                                         </Typography>
                                     </Grid>
