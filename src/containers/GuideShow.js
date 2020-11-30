@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
-import { Redirect, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 // import { editGuide } from '../actions';
 import { loadGuide, likeGuide, clearGuides } from '../actions';
@@ -46,14 +46,16 @@ const GuideShow = () => {
                         {guide.user.id === loggedInUser.id
                             ?
                                 <div className="guide-show-edit-container">
-                                    <Button
-                                        className="guide-show-edit-button"
-                                        variant="contained"
-                                        color="secondary"
-                                        size="small"
-                                    >
-                                        Edit this guide
-                                    </Button>
+                                    <Link to={"/guides/" + guide.id + "/edit/"}>
+                                        <Button
+                                            className="guide-show-edit-button"
+                                            variant="contained"
+                                            color="secondary"
+                                            size="small"
+                                        >
+                                            Edit this guide
+                                        </Button>
+                                    </Link>
                                 </div>
                             :
                                 null

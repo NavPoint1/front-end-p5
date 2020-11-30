@@ -139,10 +139,6 @@ const SlideForm = (props) => {
                                 }))}
                                 variant="outlined"
                                 margin="none"
-                                style={{
-                                    // marginTop: "0.8%",
-                                    // marginBottom: "0.3%"
-                                }}
                                 fullWidth
                                 id="slide-field-media"
                                 className="slide-form-field"
@@ -184,10 +180,6 @@ const SlideForm = (props) => {
                                     autoFocus
                                     variant="outlined"
                                     margin="none"
-                                    style={{
-                                        // marginTop: "0.8%",
-                                        // marginBottom: "-0.05%"
-                                    }}
                                     fullWidth
                                     id="slide-field-content"
                                     className="slide-form-field"

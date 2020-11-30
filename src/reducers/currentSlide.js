@@ -4,6 +4,8 @@ const currentSlide = (state = {}, action) => {
             return action.payload
         case 'LOGOUT':
             return {}
+        case 'EDIT_SLIDES':
+            return 0
         default:
             return state
     }

@@ -2,6 +2,10 @@ const slides = (state = [], action) => {
     switch(action.type) {
         case 'LOGOUT':
             return []
+        case 'CREATE_GUIDE':
+            return []
+        case 'CLEAR_GUIDE_BUILDER':
+            return []
         case 'CREATE_SLIDE':
             let newState = [...state, action.payload]
             newState.forEach( (slide, index) => {
@@ -28,6 +32,10 @@ const slides = (state = [], action) => {
             let layoutUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
             layoutUpdatedSlide.layout = action.payload.layout
             return state
+        case 'EDIT_SLIDES':
+            let editingSlides = action.payload
+            editingSlides.forEach( (slide, index) => slide.slideNumber = index + 1)
+            return editingSlides
         default:
             return state
     }

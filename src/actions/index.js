@@ -46,6 +46,37 @@ export const createGuide = (guide) => {
     }
 }
 
+export const updateGuide = (guide) => {
+    return(dispatch) => {
+        fetch(URL + "guides/" + guide.id, {
+            method: 'PATCH',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(guide)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.id) {
+                // store guide in state
+                dispatch({
+                    type: "SUBMIT_EDITED_GUIDE",
+                    payload: data
+                })
+                // redirect to show page with history
+                history.push("/guides/" + data.id)
+            }
+            else {
+                // print error message
+                dispatch({
+                    type: "ERROR",
+                    payload: data[0] + "."
+                })
+            }
+        })
+    }
+}
+
 export const loadGuide = (guideId) => {
     return(dispatch) => {
         fetch(URL + "guides/" + guideId)
@@ -103,6 +134,12 @@ export const likeGuide = (guideId, userId) => {
     }
 }
 
+export const clearGuideBuilder = () => {
+    return {
+        type: "CLEAR_GUIDE_BUILDER",
+    }
+}
+
 export const createSlide = (newSlide) => {
     return {
         type: "CREATE_SLIDE",
@@ -142,6 +179,13 @@ export const updateSlideLayout = (slide) => {
     return {
         type: "UPDATE_SLIDE_LAYOUT",
         payload: slide
+    }
+}
+
+export const loadSlides = (guide) => {
+    return {
+        type: "EDIT_SLIDES",
+        payload: guide.slides
     }
 }
 

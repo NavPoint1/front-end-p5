@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { useSelector } from 'react-redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 
 // Containers
@@ -23,33 +23,32 @@ function App() {
 
   return (
     <div id="App">
-      <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" render={() =>  <GuidesIndex /> }/>
-          <Route exact path="/guides/new" render={() => <GuideCreator />}/>
-          {/* user can only see their own profile for now? */}
-          <Route exact path="/profile" render={() => 
-            Object.keys(loggedInUser).length === 0
-              ?
-                <Redirect to="/" />
-              :
-                <ProfileContainer />
-            }/>
-          <Route exact path="/guides/:id" render={() => <GuideShow />}/>
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/logout" render={() => 
-            Object.keys(loggedInUser).length === 0
+      <NavBar />
+      <Switch>
+        <Route exact path="/" render={() =>  <GuidesIndex /> }/>
+        <Route exact path="/guides/new" render={() => <GuideCreator edit="false"/>}/>
+        {/* user can only see their own profile for now? */}
+        <Route exact path="/profile" render={() => 
+          Object.keys(loggedInUser).length === 0
             ?
               <Redirect to="/" />
             :
-              <LogOut />
+              <ProfileContainer />
           }/>
-          <Route exact path="/register" component={SignupForm} />
-          <Route exact path="/about" component={About} />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
+        <Route exact path="/guides/:id/edit" render={() => <GuideCreator edit="true"/>}/>
+        <Route exact path="/guides/:id" render={() => <GuideShow />}/>
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/logout" render={() => 
+          Object.keys(loggedInUser).length === 0
+          ?
+            <Redirect to="/" />
+          :
+            <LogOut />
+        }/>
+        <Route exact path="/register" component={SignupForm} />
+        <Route exact path="/about" component={About} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   );
 }

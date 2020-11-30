@@ -103,37 +103,16 @@ const SlideBuilder = () => {
                                         size="small"
                                         color="primary"
                                         value="0"
-                                        // checked={slides[currentSlide].layout == 0 ? true : false}
-                                        // onClick={slides[currentSlide].layout === 0 ? null : () => {
-                                        //     dispatch(updateSlideLayout({
-                                        //         slideNumber: slides[currentSlide].slideNumber,
-                                        //         layout: 0
-                                        //     }))
-                                        // }}
                                     />
                                     <Radio
                                         size="small"
                                         color="primary"
                                         value="1"
-                                        // checked={slides[currentSlide].layout == 1 ? true : false}
-                                        // onClick={slides[currentSlide].layout === 1 ? null : () => {
-                                        //     dispatch(updateSlideLayout({
-                                        //         slideNumber: slides[currentSlide].slideNumber,
-                                        //         layout: 1
-                                        //     }))
-                                        // }}
                                     />
                                     <Radio
                                         size="small"
                                         color="primary"
                                         value="2"
-                                        // checked={slides[currentSlide].layout == 2 ? true : false}
-                                        // onClick={slides[currentSlide].layout === 2 ? null : () => {
-                                        //     dispatch(updateSlideLayout({
-                                        //         slideNumber: slides[currentSlide].slideNumber,
-                                        //         layout: 2
-                                        //     }))
-                                        // }}
                                     />
                                 </RadioGroup>
                             :

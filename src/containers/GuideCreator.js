@@ -14,10 +14,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Redirect, useHistory } from 'react-router-dom'
 
-import { createGuide, clearGuide, clearErrors } from '../actions';
+import { createGuide, clearGuide, clearErrors, loadSlides, clearGuideBuilder, updateGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideBuilder from './SlideBuilder'
+
+const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }))
 
-const GuideCreator = () => {
+const GuideCreator = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -54,12 +56,26 @@ const GuideCreator = () => {
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        if (Object.keys(guide).length !== 0) {
-            dispatch(clearGuide())
+        if(props.edit === "false") {
+            if (Object.keys(guide).length !== 0) {
+                dispatch(clearGuide())
+            }
+        }
+        else {
+            if (Object.keys(guide).length !== 0) {
+                dispatch(loadSlides(guide))
+            }
         }
         setLoaded(true)
-        return dispatch(clearErrors());
+        return handleUnmount;
     },[])
+
+    const handleUnmount = () => {
+        dispatch(clearErrors());
+        if (props.edit === "true") {
+            dispatch(clearGuideBuilder())
+        }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -77,8 +93,17 @@ const GuideCreator = () => {
             slides
         }
 
-        // dispatch to state
-        dispatch(createGuide(newGuide))
+        if (props.edit === "false") {
+            dispatch(createGuide(newGuide))
+        }
+        else {
+            newGuide.id = guide.id
+            dispatch(updateGuide(newGuide))
+        }
+    }
+
+    const determineUrl = () => {
+        return guide.thumbnail_url ? URL + guide.thumbnail_url : null
     }
 
     return (
@@ -86,10 +111,10 @@ const GuideCreator = () => {
               ?
                 <Redirect to="/" />
               :
-              Object.keys(guide).length !== 0 && loaded === true
-                ?
-                    <Redirect to={"/guides/" + guide.id} />
-                :
+            //   Object.keys(guide).length !== 0 && loaded === true
+            //     ?
+            //         <Redirect to={"/guides/" + guide.id} />
+            //     :
                     <div id="guide-creator-container">
                         <Box 
                             // border={1} 
@@ -106,6 +131,7 @@ const GuideCreator = () => {
                                     <Grid container spacing={0}>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
+                                                defaultValue={props.edit === "true" ? guide.title : null}
                                                 variant="outlined"
                                                 margin="dense"
                                                 fullWidth
@@ -130,26 +156,13 @@ const GuideCreator = () => {
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
-                                            {/* <div className="flex-container">
-                                                <Button
-                                                    startIcon={<SaveIcon />}
-                                                    name="save"
-                                                    type="submit"
-                                                    variant="contained"
-                                                    color="primary"
-                                                    style={{
-                                                        float: "right"
-                                                    }}
-                                                >
-                                                    Thumbnail
-                                                </Button>
-                                            </div> */}
                                             <TextField
+                                                defaultValue={props.edit === "true" ? determineUrl() : null}
                                                 variant="outlined"
                                                 margin="dense"
                                                 fullWidth
                                                 id="guide-thumbnail-field"
-                                                label="Thumbnail"
+                                                label="Thumbnail Image"
                                                 name="thumbnail"
                                                 size="small"
                                                 className={classes.root}
