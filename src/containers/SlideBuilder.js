@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-// import TextField from '@material-ui/core/TextField';
-// import { borders } from '@material-ui/system';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
 
 import AddIcon from '@material-ui/icons/Add';
 
-import { /* saveSlide, */ createSlide, setCurrentSlide } from '../actions';
+import { updateSlideLayout, createSlide, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideForm from '../components/SlideForm'
@@ -29,7 +29,8 @@ const SlideBuilder = () => {
         dispatch(createSlide({
             header: "",
             content: "",
-            media: ""
+            media: "",
+            layout: 0
         }))
         dispatch(setCurrentSlide(slides.length))
     }
@@ -74,8 +75,8 @@ const SlideBuilder = () => {
                 height="79.7vh"
             >
             <Container component="main" maxWidth="xl">
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                <Grid container spacing={0}>
+                    <Grid item xs={12} sm={8}>
                         <Button
                             startIcon={<AddIcon />}
                             onClick={createNewSlide}
@@ -84,6 +85,62 @@ const SlideBuilder = () => {
                         >
                             Add Slide
                         </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        {slides.length > 0
+                            ?
+                                <RadioGroup
+                                    row
+                                    defaultValue="0"
+                                    onChange={(e) => {
+                                        dispatch(updateSlideLayout({
+                                            slideNumber: slides[currentSlide].slideNumber,
+                                            layout: e.target.value
+                                        }))
+                                    }}
+                                >
+                                    <Radio
+                                        size="small"
+                                        color="primary"
+                                        value="0"
+                                        // checked={slides[currentSlide].layout == 0 ? true : false}
+                                        // onClick={slides[currentSlide].layout === 0 ? null : () => {
+                                        //     dispatch(updateSlideLayout({
+                                        //         slideNumber: slides[currentSlide].slideNumber,
+                                        //         layout: 0
+                                        //     }))
+                                        // }}
+                                    />
+                                    <Radio
+                                        size="small"
+                                        color="primary"
+                                        value="1"
+                                        // checked={slides[currentSlide].layout == 1 ? true : false}
+                                        // onClick={slides[currentSlide].layout === 1 ? null : () => {
+                                        //     dispatch(updateSlideLayout({
+                                        //         slideNumber: slides[currentSlide].slideNumber,
+                                        //         layout: 1
+                                        //     }))
+                                        // }}
+                                    />
+                                    <Radio
+                                        size="small"
+                                        color="primary"
+                                        value="2"
+                                        // checked={slides[currentSlide].layout == 2 ? true : false}
+                                        // onClick={slides[currentSlide].layout === 2 ? null : () => {
+                                        //     dispatch(updateSlideLayout({
+                                        //         slideNumber: slides[currentSlide].slideNumber,
+                                        //         layout: 2
+                                        //     }))
+                                        // }}
+                                    />
+                                </RadioGroup>
+                            :
+                                null
+                        }
+                    </Grid>
+                    <Grid item xs={12}>
                         {slides[currentSlide] 
                             ?
                                 <SlideForm />

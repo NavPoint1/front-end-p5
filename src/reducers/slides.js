@@ -24,6 +24,10 @@ const slides = (state = [], action) => {
             let mediaUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
             mediaUpdatedSlide.media = action.payload.media
             return state
+        case 'UPDATE_SLIDE_LAYOUT':
+            let layoutUpdatedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
+            layoutUpdatedSlide.layout = action.payload.layout
+            return state
         default:
             return state
     }

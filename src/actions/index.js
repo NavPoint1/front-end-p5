@@ -138,6 +138,13 @@ export const updateSlideMedia = (slide) => {
     }
 }
 
+export const updateSlideLayout = (slide) => {
+    return {
+        type: "UPDATE_SLIDE_LAYOUT",
+        payload: slide
+    }
+}
+
 export const setCurrentSlide = (slide) => {
     return {
         type: "SET_CURRENT_SLIDE_INDEX",
