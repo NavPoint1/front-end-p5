@@ -8,7 +8,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { Link, useParams } from 'react-router-dom'
 
 // import { editGuide } from '../actions';
-import { loadGuide, likeGuide, clearGuides } from '../actions';
+import { loadGuide, likeGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import NotFound from '../components/NotFound'
@@ -17,7 +17,7 @@ import ViewCarousel from '../components/ViewCarousel'
 const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
-const CWL_PURPLE = "#2d192d"
+// const CWL_PURPLE = "#2d192d"
 
 const GuideShow = () => {
     let { id } = useParams();
@@ -73,6 +73,7 @@ const GuideShow = () => {
                         <div className="flex-container">
                             <img
                                 className="guide-show-thumbnail"
+                                alt="guide-show-thumbnail"
                                 src={guide.thumbnail_url ? URL + guide.thumbnail_url : "https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"}
                             />
                         </div>

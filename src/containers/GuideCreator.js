@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -13,7 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Redirect, useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import { createGuide, clearGuide, clearErrors, loadSlides, clearGuideBuilder, updateGuide, deleteGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,15 +48,13 @@ const useStyles = makeStyles((theme) => ({
 const GuideCreator = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const history = useHistory();
     const loggedInUser = useSelector(state => state.loggedInUser);
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const errors = useSelector(state => state.errors);
 
-    const [loaded, setLoaded] = useState(false)
-
     useEffect(() => {
+        dispatch(clearErrors())
         if(props.edit === "false") {
             if (Object.keys(guide).length !== 0) {
                 dispatch(clearGuide())
@@ -67,7 +65,6 @@ const GuideCreator = (props) => {
                 dispatch(loadSlides(guide))
             }
         }
-        setLoaded(true)
         return handleUnmount;
     },[])
 

@@ -15,7 +15,7 @@ const NavBar = () => {
         <div id="navbar">
             <Link to="/">
                 <div id="home-container">
-                    <img src={crownIcon} id="home" />
+                    <img src={crownIcon} id="home" alt="crown-logo" />
                 </div>
             </Link>
             <div id="navbar-buttons-container">

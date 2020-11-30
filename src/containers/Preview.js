@@ -7,8 +7,8 @@ import Box from '@material-ui/core/Box';
 
 import SlidePreview from '../components/SlidePreview'
 
-const CWL_YELLOW = "#f2aa27"
-const CWL_PURPLE = "#2d192d"
+// const CWL_YELLOW = "#f2aa27"
+// const CWL_PURPLE = "#2d192d"
 const CWL_LIGHT_GRAY = "#808080"
 
 const Preview = () => {

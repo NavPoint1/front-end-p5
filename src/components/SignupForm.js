@@ -107,7 +107,6 @@ function Copyright() {
           if(data.id) {
             // store loggedInUser in state
             dispatch(login(data))
-            // redirect to home
           }
           else {
             // print error message

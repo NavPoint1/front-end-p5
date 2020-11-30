@@ -11,9 +11,9 @@ import Box from '@material-ui/core/Box';
 import { setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-const CWL_YELLOW = "#f2aa27"
+// const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"
-const CWL_LIGHT_GRAY = "#808080"
+// const CWL_LIGHT_GRAY = "#808080"
 
 const SlidePreview = (props) => {
     const dispatch = useDispatch();

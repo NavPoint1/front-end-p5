@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 import CarouselSlide from '../components/CarouselSlide'
 
-const { red, blue, green } = require('@material-ui/core/colors');
+const { red } = require('@material-ui/core/colors');
 
 const ViewCarousel = () => {
     const guide = useSelector(state => state.guide);
