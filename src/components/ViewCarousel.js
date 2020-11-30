@@ -40,7 +40,7 @@ const ViewCarousel = () => {
                 autoplay={false}
                 style={{ position: 'absolute' }}
             >
-                {guide.slides.map(slide => 
+                {guide.slides.sort((a, b) => a.id - b.id ).map(slide => 
                     <CarouselSlide
                         key={slide.id}
                         media={slide.media}

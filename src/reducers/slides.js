@@ -6,9 +6,6 @@ const slides = (state = [], action) => {
             let newState = [...state, action.payload]
             newState.forEach( (slide, index) => {
                 slide.slideNumber = index + 1
-                slide.header = ""
-                slide.content = ""
-                slide.media = ""
             })
             return newState
         case 'DELETE_SLIDE':

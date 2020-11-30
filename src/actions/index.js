@@ -156,7 +156,7 @@ export const loadGuides = () => {
         fetch(URL + "guides/")
             .then(res => res.json())
             .then(data => {
-                if(data.length) {
+                if(typeof(data) !== "string") {
                     // store guides in state
                     dispatch({
                         type: "LOAD_GUIDES",

@@ -80,7 +80,7 @@ body {
 }
 
 .slide-form-media {
-    height: 68.5vh;
+    max-height: 68.5vh;
     max-width: 100%;
     border-radius: 10px;
 }
@@ -121,7 +121,7 @@ body {
 }
 
 .slide-preview-media {
-    height: 87px;
+    max-height: 87px;
     max-width: 100%;
 }
 
@@ -184,7 +184,7 @@ body {
 }
 
 .carousel-slide-media {
-    height: 71.48vh;
+    max-height: 71.48vh;
     max-width: 100%;
     border-radius: 10px;
 }
@@ -205,12 +205,13 @@ body {
     border: 3px solid #f2aa27;
     border-radius: 800px;
     width: 580px;
+    height: 580px;
     margin-top: 8%;
     opacity: 0.94;
 }
 
 .login-form-inner-wrapper {
-    margin-top: -15%;
+    margin-top: -70px;
     padding: 50px;
 }
 

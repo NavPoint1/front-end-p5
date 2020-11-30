@@ -26,7 +26,11 @@ const SlideBuilder = () => {
 
     const createNewSlide = (event) => {
         event.preventDefault()
-        dispatch(createSlide({}))
+        dispatch(createSlide({
+            header: "",
+            content: "",
+            media: ""
+        }))
         dispatch(setCurrentSlide(slides.length))
     }
 

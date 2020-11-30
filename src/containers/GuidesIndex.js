@@ -7,6 +7,7 @@ import { loadGuides, clearGuide, clearGuides } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import GuideTile from '../components/GuideTile'
+import NotFound from '../components/NotFound'
 
 const GuidesIndex = () => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const GuidesIndex = () => {
             </div>
             <div className="guides-index-container">
                 <Grid container spacing={2}>
-                    {guides.map(guide => <GuideTile key={guide.id} guide={guide} /> )}
+                    {guides.length > 0 ? guides.map(guide => <GuideTile key={guide.id} guide={guide} /> ) : <NotFound />}
                 </Grid>
             </div>
         </div>
