@@ -100,6 +100,28 @@ export const loadGuide = (guideId) => {
     }
 }
 
+export const deleteGuide = (guideId) => {
+    return(dispatch) => {
+        fetch(URL + "guides/" + guideId, {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data === "success") {
+                // redirect to home
+                history.push("/")
+            }
+            else {
+                // print error message
+                dispatch({
+                    type: "ERROR",
+                    payload: data
+                })
+            }
+        })
+    }
+}
+
 export const clearGuide = () => {
     return {
         type: "CLEAR_GUIDE",

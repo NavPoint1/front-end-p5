@@ -9,12 +9,13 @@ import Box from '@material-ui/core/Box';
 
 import SaveIcon from '@material-ui/icons/Save';
 import PublishIcon from '@material-ui/icons/Publish';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Redirect, useHistory } from 'react-router-dom'
 
-import { createGuide, clearGuide, clearErrors, loadSlides, clearGuideBuilder, updateGuide } from '../actions';
+import { createGuide, clearGuide, clearErrors, loadSlides, clearGuideBuilder, updateGuide, deleteGuide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideBuilder from './SlideBuilder'
@@ -111,116 +112,128 @@ const GuideCreator = (props) => {
               ?
                 <Redirect to="/" />
               :
-            //   Object.keys(guide).length !== 0 && loaded === true
-            //     ?
-            //         <Redirect to={"/guides/" + guide.id} />
-            //     :
-                    <div id="guide-creator-container">
-                        <Box 
-                            // border={1} 
-                            p={1} 
-                            paddingTop={0}
-                            paddingBottom={2} 
-                            width="99%"
-                            height="9%"
-                            // maxHeight="50%"
-                            // overflow="hidden"
-                        >
-                            <Container component="main" maxWidth="sm" >
-                                <form onSubmit={handleSubmit} noValidate>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                defaultValue={props.edit === "true" ? guide.title : null}
-                                                variant="outlined"
-                                                margin="dense"
-                                                fullWidth
-                                                id="guide-title-field"
-                                                label="Title"
-                                                name="title"
-                                                autoFocus
-                                                size="small"
-                                                className={classes.root}
-                                                InputLabelProps={{
-                                                    classes: {
-                                                        root: classes.label,
-                                                        focused: classes.focusedLabel,
-                                                    }
-                                                }} 
-                                                InputProps={{ 
-                                                    classes: {
-                                                        root: classes.text,
-                                                        notchedOutline: classes.notchedOutline,
-                                                    }
-                                                }}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                defaultValue={props.edit === "true" ? determineUrl() : null}
-                                                variant="outlined"
-                                                margin="dense"
-                                                fullWidth
-                                                id="guide-thumbnail-field"
-                                                label="Thumbnail Image"
-                                                name="thumbnail"
-                                                size="small"
-                                                className={classes.root}
-                                                InputLabelProps={{
-                                                    classes: {
-                                                        root: classes.label,
-                                                        focused: classes.focusedLabel,
-                                                    }
-                                                }} 
-                                                InputProps={{ 
-                                                    classes: {
-                                                        root: classes.text,
-                                                        notchedOutline: classes.notchedOutline,
-                                                    }
-                                                }}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={4}>
-                                            <Button
-                                                startIcon={<SaveIcon />}
-                                                name="save"
-                                                type="submit"
-                                                variant="contained"
-                                                color="primary"
-                                            >
-                                                SAVE
-                                            </Button>
-                                        </Grid>
-                                        <Grid item xs={12} sm={4}>
-                                            <div className="author-preview">
-                                                by {loggedInUser.username.charAt(0).toUpperCase() + loggedInUser.username.slice(1)}
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={12} sm={4}>
-                                            <Button
-                                                startIcon={<PublishIcon />}
-                                                name="publish"
-                                                type="submit"
-                                                variant="contained"
-                                                color="primary"
-                                                style={{
-                                                    float: "right"
-                                                }}
-                                            >
-                                                PUBLISH
-                                            </Button>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                                <div className="guide-creator-errors">
-                                                    {errors} 
-                                                </div>
-                                        </Grid>
+                <div id="guide-creator-container">
+                    <Box 
+                        // border={1} 
+                        p={1} 
+                        paddingTop={0}
+                        paddingBottom={2} 
+                        width="99%"
+                        height="9%"
+                        // maxHeight="50%"
+                        // overflow="hidden"
+                    >
+                        {props.edit === "true"
+                            ?
+                                <Button
+                                    onClick={() => dispatch(deleteGuide(guide.id))}
+                                    startIcon={<DeleteIcon />}
+                                    id="edit-guide-delete-button"
+                                    name="delete"
+                                    variant="contained"
+                                    color="secondary"
+                                    size="small"
+                                >
+                                    Delete Guide
+                                </Button>
+                            :
+                                null
+                        }
+                        <Container component="main" maxWidth="sm" >
+                            <form onSubmit={handleSubmit} noValidate>
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            defaultValue={props.edit === "true" ? guide.title : null}
+                                            variant="outlined"
+                                            margin="dense"
+                                            fullWidth
+                                            id="guide-title-field"
+                                            label="Title"
+                                            name="title"
+                                            autoFocus
+                                            size="small"
+                                            className={classes.root}
+                                            InputLabelProps={{
+                                                classes: {
+                                                    root: classes.label,
+                                                    focused: classes.focusedLabel,
+                                                }
+                                            }} 
+                                            InputProps={{ 
+                                                classes: {
+                                                    root: classes.text,
+                                                    notchedOutline: classes.notchedOutline,
+                                                }
+                                            }}
+                                        />
                                     </Grid>
-                                </form>
-                            </Container>
-                        </Box>
-                        <SlideBuilder />
-                    </div>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            defaultValue={props.edit === "true" ? determineUrl() : null}
+                                            variant="outlined"
+                                            margin="dense"
+                                            fullWidth
+                                            id="guide-thumbnail-field"
+                                            label="Thumbnail Image"
+                                            name="thumbnail"
+                                            size="small"
+                                            className={classes.root}
+                                            InputLabelProps={{
+                                                classes: {
+                                                    root: classes.label,
+                                                    focused: classes.focusedLabel,
+                                                }
+                                            }} 
+                                            InputProps={{ 
+                                                classes: {
+                                                    root: classes.text,
+                                                    notchedOutline: classes.notchedOutline,
+                                                }
+                                            }}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                        <Button
+                                            startIcon={<SaveIcon />}
+                                            name="save"
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                        >
+                                            SAVE
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                        <div className="author-preview">
+                                            by {loggedInUser.username.charAt(0).toUpperCase() + loggedInUser.username.slice(1)}
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                        <Button
+                                            startIcon={<PublishIcon />}
+                                            name="publish"
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                            style={{
+                                                float: "right"
+                                            }}
+                                        >
+                                            PUBLISH
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                            <div className="guide-creator-errors">
+                                                {errors} 
+                                            </div>
+                                    </Grid>
+                                </Grid>
+                            </form>
+                        </Container>
+                    </Box>
+                    <SlideBuilder />
+                </div>
     )
 }
 

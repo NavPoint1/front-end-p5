@@ -399,3 +399,9 @@ body {
     margin-top: 2px;
     margin-bottom: -17px;
 }
+
+#edit-guide-delete-button {
+    position: absolute;
+    left: 0;
+    margin: 20px;
+}
