@@ -218,6 +218,16 @@ export const setCurrentSlide = (slide) => {
     }
 }
 
+export const moveSlide = (slideNumber, destination) => {
+    return {
+        type: "MOVE_SLIDE",
+        payload: {
+            slideNumber,
+            destination
+        }
+    }
+}
+
 export const clearGuides = () => {
     return {
         type: "CLEAR_GUIDES",

@@ -341,7 +341,7 @@ body {
 .guide-show-edit-container {
     padding: 20px;
     position: absolute;
-    right: 0;
+    left: 0;
 }
 
 .guide-show-like-container {
@@ -402,6 +402,11 @@ body {
 
 #edit-guide-delete-button {
     position: absolute;
-    left: 0;
+    right: 0;
     margin: 20px;
+}
+
+.preview-drag-line {
+    position: absolute;
+    background-color: white;
 }

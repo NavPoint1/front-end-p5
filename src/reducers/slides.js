@@ -36,6 +36,15 @@ const slides = (state = [], action) => {
             let editingSlides = action.payload
             editingSlides.forEach( (slide, index) => slide.slideNumber = index + 1)
             return editingSlides
+        case 'MOVE_SLIDE':
+            // get the dragged slide
+            let movedSlide = state.find(slide => slide.slideNumber === action.payload.slideNumber)
+            // get the array without the dragged slide
+            let movedSlides = state.filter(slide => slide.slideNumber !== action.payload.slideNumber)
+            // insert the dragged slide at the proper place
+            movedSlides.splice(action.payload.destination - 1, 0, movedSlide)
+            movedSlides.forEach( (slide, index) => slide.slideNumber = index + 1)
+            return movedSlides
         default:
             return state
     }

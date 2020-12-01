@@ -21,7 +21,7 @@ const SlidePreview = (props) => {
 
     return (
         <Box
-            onClick={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
+            onMouseDown={() => dispatch(setCurrentSlide(props.slide.slideNumber - 1))}
             // border={1}
             className={props.slide.slideNumber - 1 === currentSlide ? "preview-slide-highlighted" : "preview-slide"}
             bgcolor={CWL_PURPLE}
