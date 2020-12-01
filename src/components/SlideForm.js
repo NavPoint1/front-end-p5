@@ -127,7 +127,6 @@ const SlideForm = (props) => {
                                 <img
                                     src={slides[currentSlide].media}
                                     className={"slide-form-display slide-form-media " + (slides[currentSlide].media === "" ? "empty-media" : "")}
-                                    alt="slide-form-media"
                                 />
                             </div>
                         :
