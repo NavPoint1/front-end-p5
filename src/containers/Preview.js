@@ -62,7 +62,6 @@ const Preview = () => {
                         style={{
                             left: 19,
                             width: "180px",
-                            height: "2px",
                             // bottom: mouseY ? 800 + mouseY : 800
                             bottom: 956 - mouseY
                         }}

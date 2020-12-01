@@ -408,5 +408,6 @@ body {
 
 .preview-drag-line {
     position: absolute;
-    background-color: white;
+    height: 1px;
+    background-color: #dfdfdf;
 }

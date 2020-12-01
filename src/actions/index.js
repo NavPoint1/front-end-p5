@@ -58,6 +58,7 @@ export const updateGuide = (guide) => {
         .then(res => res.json())
         .then(data => {
             if(data.id) {
+                console.log(data)
                 // store guide in state
                 dispatch({
                     type: "SUBMIT_EDITED_GUIDE",
