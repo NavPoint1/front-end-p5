@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import Radio from '@material-ui/core/Radio';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import AddIcon from '@material-ui/icons/Add';
 
-import { updateSlideLayout, createSlide, setCurrentSlide } from '../actions';
+import { updateSlideLayout, createSlide, setCurrentSlide, loadThemes, setCurrentTheme } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideForm from '../components/SlideForm'
@@ -23,6 +27,26 @@ const SlideBuilder = () => {
     // const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const currentSlide = useSelector(state => state.currentSlide)
+    const themes = useSelector(state => state.themes);
+    const currentTheme = useSelector(state => state.currentTheme);
+
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        dispatch(loadThemes())
+    },[])
+
+    const handleChange = (event) => {
+        dispatch(setCurrentTheme(event.target.value));
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
+    
+    const handleOpen = () => {
+        setOpen(true);
+    };
 
     const createNewSlide = (event) => {
         event.preventDefault()
@@ -89,6 +113,33 @@ const SlideBuilder = () => {
                     <Grid item xs={12} sm={4}>
                         {slides.length > 0
                             ?
+                                <FormControl>
+                                    <InputLabel id="theme-select-label">
+                                        Choose a theme:
+                                    </InputLabel>
+                                    <Select
+                                        labelId="theme-select-label"
+                                        id="theme-select-menu"
+                                        // defaultValue={theme}
+                                        open={open}
+                                        onClose={handleClose}
+                                        onOpen={handleOpen}
+                                        value={currentTheme ? currentTheme.id : ""}
+                                        onChange={handleChange}
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        {themes.map(theme => <MenuItem value={theme.id} key={theme.id}>
+                                            {theme.name}
+                                        </MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                            :
+                                null
+                        }
+                        {/* {slides.length > 0
+                            ?
                                 <RadioGroup
                                     row
                                     defaultValue="0"
@@ -117,7 +168,7 @@ const SlideBuilder = () => {
                                 </RadioGroup>
                             :
                                 null
-                        }
+                        } */}
                     </Grid>
                     <Grid item xs={12}>
                         {slides[currentSlide] 

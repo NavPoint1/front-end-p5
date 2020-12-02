@@ -63,6 +63,7 @@ body {
     border: 1px solid #f2aa27;
     border-radius: 10px;
     opacity: 0.95;
+    overflow: hidden;
 }
 
 .slide-form-display {
@@ -70,8 +71,8 @@ body {
 }
 
 .slide-form-header {
-    height: 4vh;
-    line-height: 4vh;
+    height: 3.96vh;
+    line-height: 3.96vh;
     font-family: Garamond;
     font-size: 2rem;
     text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
@@ -80,13 +81,13 @@ body {
 }
 
 .slide-form-media {
-    max-height: 68.5vh;
+    max-height: 59.5vh;
     max-width: 100%;
     border-radius: 10px;
 }
 
 .slide-form-content {
-    height: 66.4vh;
+    height: 57.99vh;
     padding: 10px;
     border-radius: 10px;
     font-family: Helvetica;
@@ -94,8 +95,9 @@ body {
 
 #slide-field-media {
     text-align: center;
-    padding-top: 33.37vh;
-    padding-bottom: 33.37vh;
+    margin-top: 0.59vh !important;
+    padding-top: 28.58vh;
+    padding-bottom: 28.58vh;
 }
 
 #slide-field-header {
@@ -249,6 +251,10 @@ body {
     background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
     background-blend-mode: multiply;
     z-index: -1;
+}
+
+.theme-creator-container{
+    padding-top: 55px;
 }
 
 .default-container {
@@ -410,4 +416,11 @@ body {
     position: absolute;
     height: 1px;
     background-color: #dfdfdf;
+}
+
+.theme-creator-errors {
+    font-size: 12px;
+    color: "#808080";
+    padding: 0;
+    margin: 4px;
 }

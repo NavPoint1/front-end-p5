@@ -25,12 +25,12 @@ const NavBar = () => {
                             <>
                                 <Link to="/guides/new">
                                     <Button>
-                                    <div className="navbar-button">New Guide</div>
+                                        <div className="navbar-button">New Guide</div>
                                     </Button>
                                 </Link>
-                                <Link to="/profile">
+                                <Link to="/themes/new">
                                     <Button>
-                                    <div className="navbar-button">View Profile</div>
+                                        <div className="navbar-button">Create Theme</div>
                                     </Button>
                                 </Link>
                                 <Link to="/logout">

@@ -10,6 +10,7 @@ import GuidesIndex from './containers/GuidesIndex'
 import GuideCreator from './containers/GuideCreator'
 import ProfileContainer from './containers/ProfileContainer'
 import GuideShow from './containers/GuideShow'
+import ThemeCreator from './containers/ThemeCreator'
 
 // Components
 import About from './components/About'
@@ -27,6 +28,7 @@ function App() {
       <Switch>
         <Route exact path="/" render={() =>  <GuidesIndex /> }/>
         <Route exact path="/guides/new" render={() => <GuideCreator edit="false"/>}/>
+        <Route exact path="/themes/new" render={() => <ThemeCreator />}/>
         {/* user can only see their own profile for now? */}
         <Route exact path="/profile" render={() => 
           Object.keys(loggedInUser).length === 0

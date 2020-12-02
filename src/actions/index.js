@@ -264,31 +264,77 @@ export const clearErrors = () => {
     }
 }
 
-// export const saveSlide = (slide) => {
-//     return(dispatch) => {
-//         fetch(URL + "slides", {
-//             method: 'POST',
-//             headers: {
-//             'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(slide)
-//         })
-//         .then(res => res.json())
-//         .then(data => {
-//             if(data.id) {
-//                 // store slide in state to render in preview
-//                 dispatch({
-//                     type: "SAVE_SLIDE",
-//                     payload: data
-//                 })
-//             }
-//             else {
-//                 // print error message
-//                 dispatch({
-//                     type: "ERROR",
-//                     payload: data
-//                 })
-//             }
-//         })
-//     }
-// }
+export const loadThemes = () => {
+    return(dispatch) => {
+        fetch(URL + "themes/")
+            .then(res => res.json())
+            .then(data => {
+                if(typeof(data) !== "string") {
+                    // store themes in state
+                    dispatch({
+                        type: "LOAD_THEMES",
+                        payload: data
+                    })
+                }
+                else {
+                    // print error message
+                    dispatch({
+                        type: "ERROR",
+                        payload: data
+                    })
+                }
+            })
+    }
+}
+
+export const setCurrentTheme = (themeId) => {
+    return(dispatch) => {
+        fetch(URL + "themes/" + themeId)
+            .then(res => res.json())
+            .then(data => {
+                if(typeof(data) !== "string") {
+                    // store theme in state
+                    dispatch({
+                        type: "SET_CURRENT_THEME",
+                        payload: data
+                    })
+                }
+                else {
+                    // print error message
+                    dispatch({
+                        type: "ERROR",
+                        payload: data
+                    })
+                }
+            })
+    }
+}
+
+export const createTheme = (theme) => {
+    return(dispatch) => {
+        fetch(URL + "themes", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(theme)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.id) {
+                // dispatch({
+                //     type: "CREATE_THEME",
+                //     payload: data
+                // })
+                history.push("/")
+            }
+            else {
+                // print error message
+                dispatch({
+                    type: "ERROR",
+                    payload: data[0] + "."
+                })
+            }
+        })
+    }
+}

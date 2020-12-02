@@ -15,6 +15,7 @@ import gfm from 'remark-gfm'
 import { deleteSlide, updateSlideHeader, updateSlideContent, updateSlideMedia, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"
@@ -44,6 +45,7 @@ const SlideForm = (props) => {
     const dispatch = useDispatch();
     const slides = useSelector(state => state.slides);
     const currentSlide = useSelector(state => state.currentSlide);
+    const currentTheme = useSelector(state => state.currentTheme);
 
     const [editing, setEditing] = useState("")
 
@@ -51,15 +53,66 @@ const SlideForm = (props) => {
         <Box
             className="slide-form"
             bgcolor={CWL_PURPLE}
+            style={{
+                backgroundImage: Object.keys(currentTheme).length >= 0 ? `url(${URL + currentTheme.background_url})` : ""
+            }}
             m={2}
-            p={2} 
-            paddingTop={1}
-            paddingBottom={1}
+            p={0} 
             marginTop={1}
             height="73.5vh"
         >
-            <Grid container spacing={1}>
-                <Grid item xs={12} sm={8}>
+            {currentTheme.top_border_url
+                ?
+                    <img 
+                        src={URL + currentTheme.top_border_url}
+                        style={{
+                            width: '100%',
+                            height: '6%',
+                            backgroundSize: 'cover'
+                        }}
+                    />
+                :
+                    <Box
+                        style={{
+                            height: currentTheme.top_border_url ? '0' : '6%',
+                            marginBottom: "4px"
+                        }}
+                    />
+            }
+            <Grid 
+                container
+                alignItems="center"
+                spacing={0}
+            >
+                <Grid item xs={12} sm={1}>
+                    {currentTheme.watermark_url
+                        ?
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    width: '60%',
+                                    height: '100%',
+                                    paddingLeft: '10px',
+                                }}
+                            >
+                            <img 
+                                src={URL + currentTheme.watermark_url}
+                                style={{
+                                    transform: 'scale(2.1)',
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    zIndex: '5',
+                                    position: 'absolute',
+                                    right: '0',
+                                    top: '0'
+                                }}
+                            />
+                            </div>
+                        :
+                            null
+                    }
+                </Grid>
+                <Grid item xs={12} sm={7}>
                     {editing !== "header" 
                         ?
                             <div
@@ -123,6 +176,9 @@ const SlideForm = (props) => {
                             <div 
                                 className="flex-container"
                                 onClick={() => setEditing("media")}
+                                style={{
+                                    height: '59.5vh'
+                                }}
                             >
                                 <img
                                     src={slides[currentSlide].media}
@@ -186,8 +242,8 @@ const SlideForm = (props) => {
                                     label="Text Content"
                                     name="content"
                                     multiline
-                                    rows={31}
-                                    rowsMax={31}
+                                    rows={27}
+                                    rowsMax={27}
                                     InputLabelProps={{
                                         classes: {
                                             root: classes.label,
@@ -204,6 +260,19 @@ const SlideForm = (props) => {
                     }
                 </Grid>
             </Grid>
+            {currentTheme.bottom_border_url
+                ?
+                    <img 
+                        src={URL + currentTheme.bottom_border_url}
+                        style={{
+                            width: '100%',
+                            height: '6%',
+                            backgroundSize: 'cover'
+                        }}
+                    />
+                :
+                    null
+            }
         </Box>
     )
 }
