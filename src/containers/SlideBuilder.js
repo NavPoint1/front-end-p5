@@ -10,30 +10,60 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
 
 import AddIcon from '@material-ui/icons/Add';
 
-import { updateSlideLayout, createSlide, setCurrentSlide, loadThemes, setCurrentTheme } from '../actions';
+import { updateSlideLayout, createSlide, setCurrentSlide, loadThemes, setCurrentTheme, loadGuideTheme } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SlideForm from '../components/SlideForm'
 import Preview from './Preview'
 
 const CWL_LIGHT_GRAY = "#808080"
+const CWL_YELLOW = "#f2aa27"
+const CWL_PURPLE = "#2d192d"
+
+const useStyles = makeStyles((styleTheme) => ({
+    label: {
+        color: CWL_YELLOW
+    },
+    root: {
+        "& .MuiFilledInput-root": {
+            background: CWL_PURPLE
+        }
+    },
+    text: {
+        // color: CWL_YELLOW
+        color: "#ffffff"
+    },
+    notchedOutline: {
+        // borderWidth: '1px',
+        borderColor: CWL_YELLOW + " !important"
+        // borderColor: "#ffffff !important"
+    },
+  }))
 
 const SlideBuilder = () => {
     const dispatch = useDispatch();
+    const classes = useStyles();
     // const loggedInUser = useSelector(state => state.loggedInUser);
     // const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const currentSlide = useSelector(state => state.currentSlide)
     const themes = useSelector(state => state.themes);
     const currentTheme = useSelector(state => state.currentTheme);
+    const guide = useSelector(state => state.guide);
 
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
         dispatch(loadThemes())
+        if (Object.keys(guide).length > 0) {
+            if (guide.theme) {
+                dispatch(loadGuideTheme(guide.theme))
+            }
+        }
     },[])
 
     const handleChange = (event) => {
@@ -114,21 +144,36 @@ const SlideBuilder = () => {
                         {slides.length > 0
                             ?
                                 <FormControl>
-                                    <InputLabel id="theme-select-label">
+                                    {/* <InputLabel id="theme-select-label">
                                         Choose a theme:
-                                    </InputLabel>
+                                    </InputLabel> */}
                                     <Select
                                         labelId="theme-select-label"
                                         id="theme-select-menu"
-                                        // defaultValue={theme}
+                                        variant="standard"
+                                        defaultValue={guide ? guide.theme ? guide.theme.id : "Choose a theme:" : "Choose a theme:"}
+                                        // size="small"
                                         open={open}
                                         onClose={handleClose}
                                         onOpen={handleOpen}
                                         value={currentTheme ? currentTheme.id : ""}
                                         onChange={handleChange}
+                                        className={classes.root}
+                                        InputLabelProps={{
+                                            classes: {
+                                                root: classes.label,
+                                                focused: classes.focusedLabel,
+                                            }
+                                        }} 
+                                        InputProps={{ 
+                                            classes: {
+                                                root: classes.text,
+                                                notchedOutline: classes.notchedOutline,
+                                            }
+                                        }}
                                     >
-                                        <MenuItem value="">
-                                            <em>None</em>
+                                        <MenuItem value="Choose a theme:">
+                                            <em>Choose a theme:</em>
                                         </MenuItem>
                                         {themes.map(theme => <MenuItem value={theme.id} key={theme.id}>
                                             {theme.name}

@@ -289,24 +289,38 @@ export const loadThemes = () => {
 
 export const setCurrentTheme = (themeId) => {
     return(dispatch) => {
-        fetch(URL + "themes/" + themeId)
-            .then(res => res.json())
-            .then(data => {
-                if(typeof(data) !== "string") {
-                    // store theme in state
-                    dispatch({
-                        type: "SET_CURRENT_THEME",
-                        payload: data
-                    })
-                }
-                else {
-                    // print error message
-                    dispatch({
-                        type: "ERROR",
-                        payload: data
-                    })
-                }
+        if (themeId === "Choose a theme:") {
+            dispatch({
+                type: "RESET_CURRENT_THEME",
             })
+        }
+        else {
+            fetch(URL + "themes/" + themeId)
+                .then(res => res.json())
+                .then(data => {
+                    if(typeof(data) !== "string") {
+                        // store theme in state
+                        dispatch({
+                            type: "SET_CURRENT_THEME",
+                            payload: data
+                        })
+                    }
+                    else {
+                        // print error message
+                        dispatch({
+                            type: "ERROR",
+                            payload: data
+                        })
+                    }
+                })
+        }
+    }
+}
+
+export const loadGuideTheme = (theme) => {
+    return {
+        type: "SET_CURRENT_THEME",
+        payload: theme
     }
 }
 

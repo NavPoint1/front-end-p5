@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 // import { borders } from '@material-ui/system';
 
@@ -16,10 +16,6 @@ import { Redirect } from 'react-router-dom'
 
 import { createTheme } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
-
-import SlideBuilder from './SlideBuilder'
-
-const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"

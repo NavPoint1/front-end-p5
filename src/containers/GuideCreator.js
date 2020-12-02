@@ -52,6 +52,7 @@ const GuideCreator = (props) => {
     const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const errors = useSelector(state => state.errors);
+    const currentTheme = useSelector(state => state.currentTheme);
 
     useEffect(() => {
         dispatch(clearErrors())
@@ -82,13 +83,16 @@ const GuideCreator = (props) => {
         let title = event.target.title.value
         let thumbnail = event.target.thumbnail.value
         let user_id = loggedInUser.id
+        let theme_id = currentTheme.id ? currentTheme.id : null
 
         let newGuide = {
             title,
             user_id,
             thumbnail,
             // attach slides
-            slides
+            slides,
+            // attach theme
+            theme_id
         }
 
         if (props.edit === "false") {

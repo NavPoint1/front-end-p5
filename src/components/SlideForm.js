@@ -54,7 +54,8 @@ const SlideForm = (props) => {
             className="slide-form"
             bgcolor={CWL_PURPLE}
             style={{
-                backgroundImage: Object.keys(currentTheme).length >= 0 ? `url(${URL + currentTheme.background_url})` : ""
+                backgroundImage: Object.keys(currentTheme).length >= 0 ? `url(${URL + currentTheme.background_url})` : "",
+                backgroundSize: 'cover'
             }}
             m={2}
             p={0} 
@@ -63,12 +64,12 @@ const SlideForm = (props) => {
         >
             {currentTheme.top_border_url
                 ?
-                    <img 
-                        src={URL + currentTheme.top_border_url}
+                    <div
                         style={{
+                            backgroundImage: `url(${URL + currentTheme.top_border_url})`,
+                            backgroundRepeat: 'round',
                             width: '100%',
                             height: '6%',
-                            backgroundSize: 'cover'
                         }}
                     />
                 :
@@ -87,7 +88,7 @@ const SlideForm = (props) => {
                 <Grid item xs={12} sm={1}>
                     {currentTheme.watermark_url
                         ?
-                            <div
+                            <div className="slide-form-watermark-container"
                                 style={{
                                     position: 'relative',
                                     width: '60%',
@@ -98,13 +99,16 @@ const SlideForm = (props) => {
                             <img 
                                 src={URL + currentTheme.watermark_url}
                                 style={{
-                                    transform: 'scale(2.1)',
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
+                                    transform: 'scale(1.2)',
+                                    width: '100%',
+                                    height: '100%',
                                     zIndex: '5',
-                                    position: 'absolute',
-                                    right: '0',
-                                    top: '0'
+                                    // position: 'absolute',
+                                    // right: '0',
+                                    // top: '0',
+                                    marginTop: '-40%',
+                                    marginBottom: '-20%',
+                                    marginLeft: '37%'
                                 }}
                             />
                             </div>
@@ -164,13 +168,18 @@ const SlideForm = (props) => {
                         variant="contained"
                         color="primary"
                         style={{
-                            float: "right"
+                            float: "right",
+                            marginRight: '6%'
                         }}
                     >
                         Delete Slide
                     </Button>
                 </Grid>
-                <Grid item xs={12} sm={8}>
+                <Grid item xs={12} sm={8}
+                    style={{
+                        paddingLeft: '2%'
+                    }}
+                >
                     {editing !== "media" 
                         ?
                             <div 
@@ -216,7 +225,11 @@ const SlideForm = (props) => {
                             />
                     }
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={4}
+                    style={{
+                        paddingRight: '2%'
+                    }}
+                >
                     {editing !== "content" 
                             ?
                                 <div 
@@ -262,12 +275,12 @@ const SlideForm = (props) => {
             </Grid>
             {currentTheme.bottom_border_url
                 ?
-                    <img 
-                        src={URL + currentTheme.bottom_border_url}
+                    <div
                         style={{
+                            backgroundImage: `url(${URL + currentTheme.bottom_border_url})`,
+                            backgroundRepeat: 'round',
                             width: '100%',
-                            height: '6%',
-                            backgroundSize: 'cover'
+                            height: '7%',
                         }}
                     />
                 :
