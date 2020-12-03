@@ -42,6 +42,20 @@ const useStyles = makeStyles((styleTheme) => ({
         borderColor: CWL_YELLOW + " !important"
         // borderColor: "#ffffff !important"
     },
+    select: {
+        '&:before': {
+            borderColor: CWL_YELLOW,
+        },
+        '&:after': {
+            borderColor: CWL_YELLOW,
+        },
+        '&:hover:not(.Mui-disabled):before': {
+            borderColor: CWL_YELLOW,
+        }
+    },
+    icon: {
+        fill: CWL_YELLOW,
+    },
   }))
 
 const SlideBuilder = () => {
@@ -158,18 +172,17 @@ const SlideBuilder = () => {
                                         onOpen={handleOpen}
                                         value={currentTheme ? currentTheme.id : ""}
                                         onChange={handleChange}
-                                        className={classes.root}
+                                        className={classes.select}
                                         InputLabelProps={{
                                             classes: {
                                                 root: classes.label,
                                                 focused: classes.focusedLabel,
                                             }
                                         }} 
-                                        InputProps={{ 
+                                        inputProps={{
                                             classes: {
-                                                root: classes.text,
-                                                notchedOutline: classes.notchedOutline,
-                                            }
+                                                icon: classes.icon,
+                                            },
                                         }}
                                     >
                                         <MenuItem value="Choose a theme:">
