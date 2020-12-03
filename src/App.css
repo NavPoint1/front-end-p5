@@ -8,7 +8,15 @@ body {
     height: 100%;
     width: 100%;
     /* overflow: hidden; */
+    /* background: rgb(17, 17, 17); */
 }
+
+/* #App::before {
+    background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    min-height: 100%;
+} */
 
 #navbar {
     position: fixed;
@@ -122,11 +130,19 @@ body {
 .slide-preview-header {
     text-align: center;
     font-size: 6px;
+    height: 6px;
+    padding-bottom: 1px;
 }
 
 .slide-preview-media {
-    max-height: 87px;
+    max-height: 76px;
     max-width: 100%;
+}
+
+.slide-preview-content {
+    /* width: 30%; */
+    height: 76px;
+    padding-bottom: 1px;
 }
 
 .preview-slide {

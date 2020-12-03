@@ -68,6 +68,7 @@ const SlideForm = (props) => {
                         style={{
                             backgroundImage: `url(${URL + currentTheme.top_border_url})`,
                             backgroundRepeat: 'round',
+                            backgroundSize: 'auto 100%',
                             width: '100%',
                             height: '6%',
                         }}
@@ -279,6 +280,7 @@ const SlideForm = (props) => {
                         style={{
                             backgroundImage: `url(${URL + currentTheme.bottom_border_url})`,
                             backgroundRepeat: 'round',
+                            backgroundSize: 'auto 100%',
                             width: '100%',
                             height: '7%',
                         }}
