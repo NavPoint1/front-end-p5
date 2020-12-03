@@ -169,9 +169,9 @@ body {
     background-image: url("https://i.pinimg.com/originals/f1/32/15/f13215a3276ab6f25339d39221caa4aa.jpg"), linear-gradient(#585858, #000);
     background-blend-mode: multiply;
     z-index: -1;
-    height: 96%;
-    width: 98%;
-    padding: 1%;
+    height: 100%;
+    width: 100%;
+    /* padding: 1%; */
     overflow: hidden;
 }
 

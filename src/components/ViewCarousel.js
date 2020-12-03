@@ -48,6 +48,7 @@ const ViewCarousel = () => {
                         style={{ backgroundColor: red[600] }}
                         header={slide.header}
                         content={slide.content}
+                        theme={guide.theme}
                     />
                 )}
             </AutoRotatingCarousel>

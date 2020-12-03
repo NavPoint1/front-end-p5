@@ -100,8 +100,8 @@ const SlideForm = (props) => {
                                 src={URL + currentTheme.watermark_url}
                                 style={{
                                     transform: 'scale(1.2)',
-                                    width: '100%',
-                                    height: '100%',
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
                                     zIndex: '5',
                                     // position: 'absolute',
                                     // right: '0',
