@@ -76,7 +76,7 @@ const SlideForm = (props) => {
                     <Box
                         style={{
                             height: currentTheme.top_border_url ? '0' : '6%',
-                            marginBottom: "4px"
+                            // marginBottom: "4px"
                         }}
                     />
             }

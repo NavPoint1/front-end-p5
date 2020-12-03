@@ -78,6 +78,7 @@ body {
     text-shadow: -1px 0 #f2aa27, 0 1px #f2aa27, 1px 0 #f2aa27, 0 -1px #f2aa27;
     text-align: center;
     border-radius: 10px;
+    /* background: rgba(17, 17, 17, 0.459) */
 }
 
 .slide-form-media {
@@ -91,6 +92,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     font-family: Helvetica;
+    /* background: rgba(17, 17, 17, 0.459) */
 }
 
 #slide-field-media {
