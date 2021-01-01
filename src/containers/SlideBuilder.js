@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-// import RadioGroup from '@material-ui/core/RadioGroup';
-// import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -34,13 +34,10 @@ const useStyles = makeStyles((styleTheme) => ({
         }
     },
     text: {
-        // color: CWL_YELLOW
         color: "#ffffff"
     },
     notchedOutline: {
-        // borderWidth: '1px',
         borderColor: CWL_YELLOW + " !important"
-        // borderColor: "#ffffff !important"
     },
     select: {
         '&:before': {
@@ -61,8 +58,6 @@ const useStyles = makeStyles((styleTheme) => ({
 const SlideBuilder = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    // const loggedInUser = useSelector(state => state.loggedInUser);
-    // const guide = useSelector(state => state.guide);
     const slides = useSelector(state => state.slides);
     const currentSlide = useSelector(state => state.currentSlide)
     const themes = useSelector(state => state.themes);
@@ -144,7 +139,7 @@ const SlideBuilder = () => {
             >
             <Container component="main" maxWidth="xl">
                 <Grid container spacing={0}>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item xs={12} sm={6}>
                         <Button
                             startIcon={<AddIcon />}
                             onClick={createNewSlide}
@@ -154,13 +149,10 @@ const SlideBuilder = () => {
                             Add Slide
                         </Button>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={3}>
                         {slides.length > 0
                             ?
                                 <FormControl>
-                                    {/* <InputLabel id="theme-select-label">
-                                        Choose a theme:
-                                    </InputLabel> */}
                                     <Select
                                         labelId="theme-select-label"
                                         id="theme-select-menu"
@@ -196,7 +188,9 @@ const SlideBuilder = () => {
                             :
                                 null
                         }
-                        {/* {slides.length > 0
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        {slides.length > 0
                             ?
                                 <RadioGroup
                                     row
@@ -226,7 +220,7 @@ const SlideBuilder = () => {
                                 </RadioGroup>
                             :
                                 null
-                        } */}
+                        }
                     </Grid>
                     <Grid item xs={12}>
                         {slides[currentSlide] 
