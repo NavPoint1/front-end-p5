@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -16,6 +16,8 @@ import { Redirect } from 'react-router-dom'
 
 import { createTheme } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+
+import ThemePreview from '../components/ThemePreview'
 
 const CWL_YELLOW = "#f2aa27"
 const CWL_PURPLE = "#2d192d"
@@ -46,6 +48,11 @@ const ThemeCreator = (props) => {
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.loggedInUser);
     const errors = useSelector(state => state.errors);
+
+    const [topBorder, setTopBorder] = useState(null)
+    const [bottomBorder, setBottomBorder] = useState(null)
+    const [backgroundImage, setBackgroundImage] = useState(null)
+    const [watermarkImage, setWatermarkImage] = useState(null)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -114,6 +121,7 @@ const ThemeCreator = (props) => {
                         <Divider />
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                onChange={(event) => setTopBorder(event.target.value)}
                                 variant="outlined"
                                 margin="dense"
                                 fullWidth
@@ -139,6 +147,7 @@ const ThemeCreator = (props) => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                onChange={(event) => setBottomBorder(event.target.value)}
                                 variant="outlined"
                                 margin="dense"
                                 fullWidth
@@ -164,6 +173,7 @@ const ThemeCreator = (props) => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                onChange={(event) => setBackgroundImage(event.target.value)}
                                 variant="outlined"
                                 margin="dense"
                                 fullWidth
@@ -189,6 +199,7 @@ const ThemeCreator = (props) => {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                onChange={(event) => setWatermarkImage(event.target.value)}
                                 variant="outlined"
                                 margin="dense"
                                 fullWidth
@@ -230,6 +241,12 @@ const ThemeCreator = (props) => {
                         </Grid>
                     </Grid>
                 </form>
+                <ThemePreview
+                    topBorder={topBorder}
+                    bottomBorder={bottomBorder}
+                    backgroundImage={backgroundImage}
+                    watermarkImage={watermarkImage}
+                />
             </Container>
         </div>
     )
