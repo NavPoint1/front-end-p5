@@ -241,13 +241,13 @@ const ThemeCreator = (props) => {
                         </Grid>
                     </Grid>
                 </form>
-                <ThemePreview
-                    topBorder={topBorder}
-                    bottomBorder={bottomBorder}
-                    backgroundImage={backgroundImage}
-                    watermarkImage={watermarkImage}
-                />
             </Container>
+            <ThemePreview
+                topBorder={topBorder}
+                bottomBorder={bottomBorder}
+                backgroundImage={backgroundImage}
+                watermarkImage={watermarkImage}
+            />
         </div>
     )
 }

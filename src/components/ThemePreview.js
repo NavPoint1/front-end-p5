@@ -55,7 +55,8 @@ const ThemePreview = (props) => {
             m={2}
             p={0} 
             marginTop={1}
-            height="73.5vh"
+            height="49vh"
+            width="59vw"
         >
             {props.topBorder
                 ?
@@ -90,7 +91,7 @@ const ThemePreview = (props) => {
                             paddingLeft: '10px',
                         }}
                     >
-                        <img 
+                       <img 
                             src={props.watermarkImage}
                             style={{
                                 transform: 'scale(1.2)',
