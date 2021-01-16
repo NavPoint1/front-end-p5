@@ -85,169 +85,171 @@ const ThemeCreator = (props) => {
           <Redirect to="/" />
         :
         <div className="default-container theme-creator-container">
-            <Container component="main" maxWidth="sm" >
-                <form onSubmit={handleSubmit} noValidate>
-                    <Grid container spacing={0}>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                id="theme-name-field"
-                                label="Theme Name"
-                                name="name"
-                                autoFocus
-                                size="medium"
-                                className={classes.root}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.label,
-                                        focused: classes.focusedLabel,
-                                    }
-                                }} 
-                                InputProps={{ 
-                                    classes: {
-                                        root: classes.text,
-                                        notchedOutline: classes.notchedOutline,
-                                    }
-                                }}
-                            />
+            <Container component="main" maxWidth="lg" >
+                <Container component="main" maxWidth="sm" >
+                    <form onSubmit={handleSubmit} noValidate>
+                        <Grid container spacing={0}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    id="theme-name-field"
+                                    label="Theme Name"
+                                    name="name"
+                                    autoFocus
+                                    size="medium"
+                                    className={classes.root}
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.label,
+                                            focused: classes.focusedLabel,
+                                        }
+                                    }} 
+                                    InputProps={{ 
+                                        classes: {
+                                            root: classes.text,
+                                            notchedOutline: classes.notchedOutline,
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div className="author-preview">
+                                    by {loggedInUser.username.charAt(0).toUpperCase() + loggedInUser.username.slice(1)}
+                                </div>
+                            </Grid>
+                            <Divider />
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    onChange={(event) => setTopBorder(event.target.value)}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    id="theme-top-border-field"
+                                    label="Top Border Image URL"
+                                    name="topBorder"
+                                    autoFocus
+                                    size="small"
+                                    className={classes.root}
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.label,
+                                            focused: classes.focusedLabel,
+                                        }
+                                    }} 
+                                    InputProps={{ 
+                                        classes: {
+                                            root: classes.text,
+                                            notchedOutline: classes.notchedOutline,
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    onChange={(event) => setBottomBorder(event.target.value)}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    id="theme-bottom-border-field"
+                                    label="Bottom Border Image URL"
+                                    name="bottomBorder"
+                                    autoFocus
+                                    size="small"
+                                    className={classes.root}
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.label,
+                                            focused: classes.focusedLabel,
+                                        }
+                                    }} 
+                                    InputProps={{ 
+                                        classes: {
+                                            root: classes.text,
+                                            notchedOutline: classes.notchedOutline,
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    onChange={(event) => setBackgroundImage(event.target.value)}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    id="theme-background-field"
+                                    label="Background Image URL"
+                                    name="background"
+                                    autoFocus
+                                    size="small"
+                                    className={classes.root}
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.label,
+                                            focused: classes.focusedLabel,
+                                        }
+                                    }} 
+                                    InputProps={{ 
+                                        classes: {
+                                            root: classes.text,
+                                            notchedOutline: classes.notchedOutline,
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    onChange={(event) => setWatermarkImage(event.target.value)}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    id="theme-watermark-field"
+                                    label="Watermark Image URL"
+                                    name="watermark"
+                                    autoFocus
+                                    size="small"
+                                    className={classes.root}
+                                    InputLabelProps={{
+                                        classes: {
+                                            root: classes.label,
+                                            focused: classes.focusedLabel,
+                                        }
+                                    }} 
+                                    InputProps={{ 
+                                        classes: {
+                                            root: classes.text,
+                                            notchedOutline: classes.notchedOutline,
+                                        }
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div className="theme-creator-errors">
+                                    {errors} 
+                                </div>
+                            </Grid>
+                            <Grid item xs={12} sm={4}>
+                                <Button
+                                    startIcon={<SaveIcon />}
+                                    name="submit"
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Submit
+                                </Button>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <div className="author-preview">
-                                by {loggedInUser.username.charAt(0).toUpperCase() + loggedInUser.username.slice(1)}
-                            </div>
-                        </Grid>
-                        <Divider />
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                onChange={(event) => setTopBorder(event.target.value)}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                id="theme-top-border-field"
-                                label="Top Border Image URL"
-                                name="topBorder"
-                                autoFocus
-                                size="small"
-                                className={classes.root}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.label,
-                                        focused: classes.focusedLabel,
-                                    }
-                                }} 
-                                InputProps={{ 
-                                    classes: {
-                                        root: classes.text,
-                                        notchedOutline: classes.notchedOutline,
-                                    }
-                                }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                onChange={(event) => setBottomBorder(event.target.value)}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                id="theme-bottom-border-field"
-                                label="Bottom Border Image URL"
-                                name="bottomBorder"
-                                autoFocus
-                                size="small"
-                                className={classes.root}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.label,
-                                        focused: classes.focusedLabel,
-                                    }
-                                }} 
-                                InputProps={{ 
-                                    classes: {
-                                        root: classes.text,
-                                        notchedOutline: classes.notchedOutline,
-                                    }
-                                }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                onChange={(event) => setBackgroundImage(event.target.value)}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                id="theme-background-field"
-                                label="Background Image URL"
-                                name="background"
-                                autoFocus
-                                size="small"
-                                className={classes.root}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.label,
-                                        focused: classes.focusedLabel,
-                                    }
-                                }} 
-                                InputProps={{ 
-                                    classes: {
-                                        root: classes.text,
-                                        notchedOutline: classes.notchedOutline,
-                                    }
-                                }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                onChange={(event) => setWatermarkImage(event.target.value)}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                id="theme-watermark-field"
-                                label="Watermark Image URL"
-                                name="watermark"
-                                autoFocus
-                                size="small"
-                                className={classes.root}
-                                InputLabelProps={{
-                                    classes: {
-                                        root: classes.label,
-                                        focused: classes.focusedLabel,
-                                    }
-                                }} 
-                                InputProps={{ 
-                                    classes: {
-                                        root: classes.text,
-                                        notchedOutline: classes.notchedOutline,
-                                    }
-                                }}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <div className="theme-creator-errors">
-                                {errors} 
-                            </div>
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Button
-                                startIcon={<SaveIcon />}
-                                name="submit"
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                            >
-                                Submit
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </form>
+                    </form>
+                </Container>
+                <ThemePreview
+                    topBorder={topBorder}
+                    bottomBorder={bottomBorder}
+                    backgroundImage={backgroundImage}
+                    watermarkImage={watermarkImage}
+                />
             </Container>
-            <ThemePreview
-                topBorder={topBorder}
-                bottomBorder={bottomBorder}
-                backgroundImage={backgroundImage}
-                watermarkImage={watermarkImage}
-            />
         </div>
     )
 }
