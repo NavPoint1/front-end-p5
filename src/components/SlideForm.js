@@ -49,6 +49,19 @@ const SlideForm = (props) => {
 
     const [editing, setEditing] = useState("")
 
+    const tooltipScan = (e) => {
+        setEditing("")
+        console.log(e.target.value)
+        /* check for square brackets
+        -if square brackets, check content for matching item
+        -if no match, check for matching spell
+        -if no match, check for matching npc
+        -if no match, do nothing
+        -if match, replace text with wowhead link in state
+
+        wowhead tooltips plugin + markdown should handle the rest from there */
+    }
+
     return (
         <Box
             className="slide-form"
@@ -242,7 +255,7 @@ const SlideForm = (props) => {
                             :
                                 <TextField
                                     defaultValue={slides[currentSlide].content}
-                                    onBlur={() => setEditing("")}
+                                    onBlur={(e) => tooltipScan(e)}
                                     onChange={(e) => dispatch(updateSlideContent({
                                         slideNumber: slides[currentSlide].slideNumber,
                                         content: e.target.value
