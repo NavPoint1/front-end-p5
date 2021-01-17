@@ -45,6 +45,7 @@ const ThemePreview = (props) => {
     const dispatch = useDispatch();
 
     return (
+        <div className="flex-container">
         <Box
             className="slide-form"
             bgcolor={CWL_PURPLE}
@@ -56,7 +57,7 @@ const ThemePreview = (props) => {
             p={0} 
             marginTop={1}
             height="49vh"
-            width="59vw"
+            width="50vw"
         >
             {props.topBorder
                 ?
@@ -110,7 +111,7 @@ const ThemePreview = (props) => {
                 </Grid>
                 <Grid item xs={12} sm={7}>
                     <div
-                        className="slide-form-display slide-form-header"
+                        className="slide-form-display theme-preview-header"
                     >
                     </div>
                 </Grid>
@@ -121,12 +122,9 @@ const ThemePreview = (props) => {
                 >
                     <div 
                         className="flex-container"
-                        style={{
-                            height: '59.5vh'
-                        }}
                     >
                         <img
-                            className={"slide-form-display slide-form-media "}
+                            className={"slide-form-display theme-preview-media "}
                         />
                     </div>
                 </Grid>
@@ -136,7 +134,7 @@ const ThemePreview = (props) => {
                     }}
                 >
                     <div 
-                        className="slide-form-display slide-form-content"
+                        className="slide-form-display theme-preview-content"
                     >
                     </div>
                 </Grid>
@@ -156,6 +154,7 @@ const ThemePreview = (props) => {
                     null
             }
         </Box>
+        </div>
     )
 }
 

@@ -446,3 +446,25 @@ body {
 #theme-select-menu {
     color: #f2aa27;
 }
+
+.theme-preview-media {
+    max-height: 59.5vh;
+    max-width: 100%;
+    border-radius: 10px;
+    height: 39.5vh;
+    width: 98%;
+}
+
+.theme-preview-content {
+    height: 37.5vh;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Helvetica;
+    /* background: rgba(17, 17, 17, 0.459) */
+}
+
+.theme-preview-header {
+    height: 2.56vh;
+    border-radius: 7px;
+    margin-bottom: 1px;
+}
