@@ -15,6 +15,10 @@ import gfm from 'remark-gfm'
 import { deleteSlide, updateSlideHeader, updateSlideContent, updateSlideMedia, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+import items from '../data/items'
+import spells from '../data/spells'
+import creatures from '../data/creatures'
+
 const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
@@ -55,15 +59,25 @@ const SlideForm = (props) => {
         if(e.target.value.includes("[") && e.target.value.includes("]")) {
             // collect array of all substrings that are between opening and closing square brackets
             let squareBrackets = e.target.value.match(/\[(.*?)\]/g)
-            // for each string in array, find match
+            // for each string in array, seek matching query term
             squareBrackets.map(squareBracket => {
                 let query = squareBracket.slice(1,-1)
-                console.log(query)
-                let match = ""
                 // first check for matching item
+                    // check item database in frontend rather than backend or external API to avoid extra communication?
+                if(items[query]) {
+                    query = items[query]
+                }
                 // if no matching item, check for matching spell
+                else if(spells[query]) {
+                    query = spells[query]
+                }
                 // if no matching spell, check for matching creature
-                // if match is found, replace substring with wowhead link in state
+                else if(creatures[query]) {
+                    query = creatures[query]
+                }
+
+                // if match was found, replace substring with wowhead link in state; otherwise return original text
+                return query
             })
         }
     }
