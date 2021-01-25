@@ -60,25 +60,38 @@ const SlideForm = (props) => {
             // collect array of all substrings that are between opening and closing square brackets
             let squareBrackets = e.target.value.match(/\[(.*?)\]/g)
             // for each string in array, seek matching query term
-            squareBrackets.map(squareBracket => {
+            let editedSubstrings = squareBrackets.map(squareBracket => {
                 let query = squareBracket.slice(1,-1)
+                let match = ""
                 // first check for matching item
                     // check item database in frontend rather than backend or external API to avoid extra communication?
                 if(items[query]) {
-                    query = items[query]
+                    match = items[query]
                 }
                 // if no matching item, check for matching spell
                 else if(spells[query]) {
-                    query = spells[query]
+                    match = spells[query]
                 }
                 // if no matching spell, check for matching creature
                 else if(creatures[query]) {
-                    query = creatures[query]
+                    match = creatures[query]
                 }
 
-                // if match was found, replace substring with wowhead link in state; otherwise return original text
-                return query
+                // if match was found, return link from data object; otherwise return original text
+                if(match) {
+                    return match
+                }
+                else {
+                    return "[" + query + "]!"
+                }
             })
+            // combine new substrings back into original string
+            let newTextContent = e.target.value
+            squareBrackets.forEach((squareBracket, index) => {
+                newTextContent = newTextContent.replace(squareBracket, editedSubstrings[index])
+            })
+            console.log(newTextContent)
+            // add to state
         }
     }
 
