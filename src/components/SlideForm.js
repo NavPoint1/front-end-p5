@@ -51,15 +51,19 @@ const SlideForm = (props) => {
 
     const tooltipScan = (e) => {
         setEditing("")
-        console.log(e.target.value)
-        /* check for square brackets
-        -if square brackets, check content for matching item
-        -if no match, check for matching spell
-        -if no match, check for matching npc
-        -if no match, do nothing
-        -if match, replace text with wowhead link in state
+        // check for square brackets
+        if(e.target.value.includes("[") && e.target.value.includes("]")) {
+            // collect array of all substrings that are between opening and closing square brackets
+            let searchTerms = []
+            // for each string in array, find match
+            searchTerms.map(query => {
 
-        wowhead tooltips plugin + markdown should handle the rest from there */
+            })
+                // first check for matching item
+                // if no matching item, check for matching spell
+                // if no matching spell, check for matching creature
+                // if match is found, replace substring with wowhead link in state
+        }
     }
 
     return (
