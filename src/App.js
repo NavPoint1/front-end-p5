@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { useSelector } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -19,8 +19,27 @@ import LoginForm from './components/LoginForm'
 import LogOut from './components/LogOut'
 import SignupForm from './components/SignupForm'
 
-function App() {
+const App = () => {
   const loggedInUser = useSelector(state => state.loggedInUser)
+
+  useEffect(() => {
+    const script1 = document.createElement('script');
+    const script2 = document.createElement('script');
+  
+    script1.innerHTML="const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};"
+    script2.src = "https://wow.zamimg.com/widgets/power.js";
+
+    script1.async = true;
+    script2.async = true;
+  
+    document.head.appendChild(script1);
+    document.head.appendChild(script2);
+  
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    }
+  }, []);
 
   return (
     <div id="App">
