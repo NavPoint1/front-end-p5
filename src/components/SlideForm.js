@@ -54,15 +54,17 @@ const SlideForm = (props) => {
         // check for square brackets
         if(e.target.value.includes("[") && e.target.value.includes("]")) {
             // collect array of all substrings that are between opening and closing square brackets
-            let searchTerms = []
+            let squareBrackets = e.target.value.match(/\[(.*?)\]/g)
             // for each string in array, find match
-            searchTerms.map(query => {
-
-            })
+            squareBrackets.map(squareBracket => {
+                let query = squareBracket.slice(1,-1)
+                console.log(query)
+                let match = ""
                 // first check for matching item
                 // if no matching item, check for matching spell
                 // if no matching spell, check for matching creature
                 // if match is found, replace substring with wowhead link in state
+            })
         }
     }
 
