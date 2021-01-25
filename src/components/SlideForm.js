@@ -82,7 +82,7 @@ const SlideForm = (props) => {
                     return match
                 }
                 else {
-                    return "[" + query + "]!"
+                    return "[" + query + "]"
                 }
             })
             // combine new substrings back into original string
@@ -90,8 +90,11 @@ const SlideForm = (props) => {
             squareBrackets.forEach((squareBracket, index) => {
                 newTextContent = newTextContent.replace(squareBracket, editedSubstrings[index])
             })
-            console.log(newTextContent)
-            // add to state
+            // dispatch to state
+            dispatch(updateSlideContent({
+                slideNumber: slides[currentSlide].slideNumber,
+                content: newTextContent
+            }))
         }
     }
 
