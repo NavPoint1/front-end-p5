@@ -79,7 +79,7 @@ const SlideForm = (props) => {
 
                 // if match was found, return link from data object; otherwise return original text
                 if(match) {
-                    return match
+                    return "[" + query + "]" + "(" + match + ")"
                 }
                 else {
                     return "[" + query + "]"
