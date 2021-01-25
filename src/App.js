@@ -26,7 +26,7 @@ const App = () => {
     const script1 = document.createElement('script');
     const script2 = document.createElement('script');
   
-    script1.innerHTML="const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};"
+    script1.innerHTML="const whTooltips = {colorLinks: true, iconizeLinks: true, iconSize: 'small', renameLinks: true};"
     script2.src = "https://wow.zamimg.com/widgets/power.js";
 
     script1.async = true;
