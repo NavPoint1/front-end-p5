@@ -62,24 +62,28 @@ const SlideForm = (props) => {
             // for each string in array, seek matching query term
             let editedSubstrings = squareBrackets.map(squareBracket => {
                 let query = squareBracket.slice(1,-1)
-                let match = ""
+                let matchId = ""
+                let matchType = ""
                 // first check for matching item
                     // check item database in frontend rather than backend or external API to avoid extra communication?
                 if(items[query]) {
-                    match = items[query]
+                    matchId = items[query]
+                    matchType = "item"
                 }
                 // if no matching item, check for matching spell
                 else if(spells[query]) {
-                    match = spells[query]
+                    matchId = spells[query]
+                    matchType = "spell"
                 }
                 // if no matching spell, check for matching creature
                 else if(creatures[query]) {
-                    match = creatures[query]
+                    matchId = creatures[query]
+                    matchType = "npc"
                 }
 
                 // if match was found, return link from data object; otherwise return original text
-                if(match) {
-                    return "[" + query + "]" + "(" + match + ")"
+                if(matchId) {
+                    return "[" + query + "]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
                 }
                 else {
                     return "[" + query + "]"
