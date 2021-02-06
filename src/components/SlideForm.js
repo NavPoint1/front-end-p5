@@ -56,9 +56,9 @@ const SlideForm = (props) => {
     const tooltipScan = (e) => {
         setEditing("")
         // check for square brackets
-        if(e.target.value.includes("[") && e.target.value.includes("]")) {
+        if(e.target.value.includes("{") && e.target.value.includes("}")) {
             // collect array of all substrings that are between opening and closing square brackets
-            let squareBrackets = e.target.value.match(/\[(.*?)\]/g)
+            let squareBrackets = e.target.value.match(/\{(.*?)\}/g)
             // for each string in array, seek matching query term
             let editedSubstrings = squareBrackets.map(squareBracket => {
                 let query = squareBracket.slice(1,-1)
