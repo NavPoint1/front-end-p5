@@ -83,10 +83,15 @@ const SlideForm = (props) => {
 
                 // if match was found, return link from data object; otherwise return original text
                 if(matchId) {
-                    return "[" + query + "]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
+                    if (matchType === "item") {
+                        return "[[" + query + "]]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
+                    }
+                    else {
+                        return "[" + query + "]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
+                    }
                 }
                 else {
-                    return "[" + query + "]"
+                    return "{" + query + "}"
                 }
             })
             // combine new substrings back into original string
