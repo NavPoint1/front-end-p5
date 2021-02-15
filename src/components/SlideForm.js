@@ -19,6 +19,10 @@ import items from '../data/items'
 import spells from '../data/spells'
 import creatures from '../data/creatures'
 
+import itemsTBC from '../data/TBC/items'
+import spellsTBC from '../data/TBC/spells'
+import creaturesTBC from '../data/TBC/creatures'
+
 const URL = "http://localhost:3000"
 
 const CWL_YELLOW = "#f2aa27"
@@ -66,28 +70,28 @@ const SlideForm = (props) => {
                 let matchType = ""
                 // first check for matching item
                     // check item database in frontend rather than backend or external API to avoid extra communication?
-                if(items[query]) {
-                    matchId = items[query]
+                if(itemsTBC[query]) {
+                    matchId = itemsTBC[query]
                     matchType = "item"
                 }
                 // if no matching item, check for matching spell
-                else if(spells[query]) {
-                    matchId = spells[query]
+                else if(spellsTBC[query]) {
+                    matchId = spellsTBC[query]
                     matchType = "spell"
                 }
                 // if no matching spell, check for matching creature
-                else if(creatures[query]) {
-                    matchId = creatures[query]
+                else if(creaturesTBC[query]) {
+                    matchId = creaturesTBC[query]
                     matchType = "npc"
                 }
 
                 // if match was found, return link from data object; otherwise return original text
                 if(matchId) {
                     if (matchType === "item") {
-                        return "[[" + query + "]]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
+                        return "[[" + query + "]]" + "(" + "https://www.wowhead.com/" + matchType + "=" + matchId + ")"
                     }
                     else {
-                        return "[" + query + "]" + "(" + "https://classic.wowhead.com/" + matchType + "=" + matchId + ")"
+                        return "[" + query + "]" + "(" + "https://www.wowhead.com/" + matchType + "=" + matchId + ")"
                     }
                 }
                 else {
