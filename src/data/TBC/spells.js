@@ -1,4 +1,4 @@
-const spellsTBC = { 'Word of Recall (OLD)': 1,
+const spells = { 'Word of Recall (OLD)': 1,
 'Word of Mass Recall (OLD)': 3,
 'Word of Recall Other': 4,
 'Death Touch': 5,
@@ -20221,4 +20221,4 @@ Hoarse: 50682,
 'Summon Tyrael': 53082,
 'Create Tyrael\'s Hilt': 53085 }
 
-export default spellsTBC
+export default spells
