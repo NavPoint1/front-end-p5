@@ -15,9 +15,9 @@ import gfm from 'remark-gfm'
 import { deleteSlide, updateSlideHeader, updateSlideContent, updateSlideMedia, setCurrentSlide } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import items from '../data/items'
-import spells from '../data/spells'
-import creatures from '../data/creatures'
+import itemsVanilla from '../data/Vanilla/items'
+import spellsVanilla from '../data/Vanilla/spells'
+import creaturesVanilla from '../data/Vanilla/creatures'
 
 import itemsTBC from '../data/TBC/items'
 import spellsTBC from '../data/TBC/spells'
@@ -56,6 +56,7 @@ const SlideForm = (props) => {
     const currentTheme = useSelector(state => state.currentTheme);
 
     const [editing, setEditing] = useState("")
+    const [game, setGame] = useState("TBC")
 
     const tooltipScan = (e) => {
         setEditing("")
@@ -70,28 +71,50 @@ const SlideForm = (props) => {
                 let matchType = ""
                 // first check for matching item
                     // check item database in frontend rather than backend or external API to avoid extra communication?
-                if(itemsTBC[query]) {
-                    matchId = itemsTBC[query]
-                    matchType = "item"
+                if(game === "TBC") {
+                    if(itemsTBC[query]) {
+                        matchId = itemsTBC[query]
+                        matchType = "item"
+                    }
+                    // if no matching item, check for matching spell
+                    else if(spellsTBC[query]) {
+                        matchId = spellsTBC[query]
+                        matchType = "spell"
+                    }
+                    // if no matching spell, check for matching creature
+                    else if(creaturesTBC[query]) {
+                        matchId = creaturesTBC[query]
+                        matchType = "npc"
+                    }
                 }
-                // if no matching item, check for matching spell
-                else if(spellsTBC[query]) {
-                    matchId = spellsTBC[query]
-                    matchType = "spell"
-                }
-                // if no matching spell, check for matching creature
-                else if(creaturesTBC[query]) {
-                    matchId = creaturesTBC[query]
-                    matchType = "npc"
+                else if(game === "Vanilla") {
+                    if(itemsVanilla[query]) {
+                        matchId = itemsVanilla[query]
+                        matchType = "item"
+                    }
+                    // if no matching item, check for matching spell
+                    else if(spellsVanilla[query]) {
+                        matchId = spellsVanilla[query]
+                        matchType = "spell"
+                    }
+                    // if no matching spell, check for matching creature
+                    else if(creaturesVanilla[query]) {
+                        matchId = creaturesVanilla[query]
+                        matchType = "npc"
+                    }
                 }
 
                 // if match was found, return link from data object; otherwise return original text
                 if(matchId) {
+                    let domain = "www"
+                    if(game === "Vanilla") {
+                        domain = "classic"
+                    }
                     if (matchType === "item") {
-                        return "[[" + query + "]]" + "(" + "https://www.wowhead.com/" + matchType + "=" + matchId + ")"
+                        return "[[" + query + "]]" + "(" + "https://" + domain + ".wowhead.com/" + matchType + "=" + matchId + ")"
                     }
                     else {
-                        return "[" + query + "]" + "(" + "https://www.wowhead.com/" + matchType + "=" + matchId + ")"
+                        return "[" + query + "]" + "(" + "https://" + domain + ".wowhead.com/" + matchType + "=" + matchId + ")"
                     }
                 }
                 else {
